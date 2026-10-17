@@ -1,0 +1,20 @@
+{
+  "app": { "name": "যাচাই" },
+  "language": { "switch": "বাংলা", "switchLabel": "Switch language to Bangla" },
+  "layout": { "skipToContent": "Skip to content", "home": "Go to the home page" },
+  "footer": {
+    "disclaimer": "This report is advisory and based only on the sources and dates shown. It is not a legal opinion or a guarantee of title. Consult a lawyer and inspect the land before paying.",
+    "watermark": "SYNTHETIC - NOT A REAL LAND RECORD"
+  },
+  "common": { "placeholder": "This screen is being built." },
+  "pages": {
+    "home": { "title": "Home", "promise": "Check before you buy" },
+    "check": { "title": "Enter the plot details" },
+    "checking": { "title": "Checking the sources" },
+    "result": { "title": "Result" },
+    "verify": { "title": "Verify a report" },
+    "print": { "title": "Printable report" },
+    "demo": { "title": "Demo console" },
+    "notFound": { "title": "Page not found" }
+  }
+}
