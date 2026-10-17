@@ -1,0 +1,44 @@
+{
+  "plot": {
+    "plot_id": "X-004",
+    "mouza_id": "m-gzp-kal-01",
+    "survey": "BS",
+    "khatian_no": "9004",
+    "dag_no": "9004",
+    "area_decimal": 33.0,
+    "land_class": "ধান",
+    "adapter_config": {},
+    "records": [
+      {
+        "record_id": "LND-9041",
+        "source": "land_records",
+        "type": "SURVEY_ENTRY",
+        "date": "2018-02-09",
+        "survey": "BS",
+        "area_decimal": 33.0,
+        "land_class": "ধান",
+        "holders": [
+          {
+            "name": "সালাম খান",
+            "father": "মৃত বশির খান",
+            "share": "1"
+          }
+        ]
+      },
+      {
+        "record_id": "KHS-9041",
+        "source": "khas",
+        "type": "ACQUISITION",
+        "date": "2025-04-01",
+        "list": null
+      }
+    ]
+  },
+  "seller": {
+    "name": "সালাম খান",
+    "father_or_husband": "মৃত বশির খান"
+  },
+  "expected_rules": [
+    "R-RES-03"
+  ]
+}

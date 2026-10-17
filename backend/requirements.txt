@@ -1,0 +1,9 @@
+fastapi
+uvicorn[standard]
+pydantic>=2
+cryptography
+pytest
+pytest-asyncio
+httpx
+jsonschema
+ruff

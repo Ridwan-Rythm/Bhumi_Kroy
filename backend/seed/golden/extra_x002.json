@@ -1,0 +1,53 @@
+{
+  "plot": {
+    "plot_id": "X-002",
+    "mouza_id": "m-gzp-kal-01",
+    "survey": "BS",
+    "khatian_no": "9002",
+    "dag_no": "9002",
+    "area_decimal": 33.0,
+    "land_class": "ধান",
+    "adapter_config": {},
+    "records": [
+      {
+        "record_id": "LND-9021",
+        "source": "land_records",
+        "type": "SURVEY_ENTRY",
+        "date": "1993-11-20",
+        "survey": "RS",
+        "area_decimal": 33.0,
+        "land_class": "ধান",
+        "holders": [
+          {
+            "name": "জসিম উদ্দিন",
+            "father": "মৃত হাশেম উদ্দিন",
+            "share": "1"
+          }
+        ]
+      },
+      {
+        "record_id": "LND-9022",
+        "source": "land_records",
+        "type": "SURVEY_ENTRY",
+        "date": "2018-02-09",
+        "survey": "BS",
+        "area_decimal": 33.0,
+        "land_class": "ধান",
+        "holders": [
+          {
+            "name": "সালাম খান",
+            "father": "মৃত বশির খান",
+            "share": "1"
+          }
+        ]
+      }
+    ]
+  },
+  "seller": {
+    "name": "সালাম খান",
+    "father_or_husband": "মৃত বশির খান"
+  },
+  "expected_rules": [
+    "R-CHAIN-01"
+  ]
+}
