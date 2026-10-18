@@ -17,8 +17,9 @@ Needs Python 3.12 and Node 22.
 git clone <this repo> && cd Bhumi_Kroy
 make setup          # pip install -r backend/requirements-dev.txt  +  cd frontend && npm ci
 make seed           # optional: the backend seeds itself on first start
-make backend        # terminal 1: http://localhost:8000  (DEMO_MODE=1 turns on /demo/*)
-make frontend       # terminal 2: http://localhost:5173  (Vite proxies /api and /demo to port 8000)
+open two terminal   # one for backend and one for frontend
+make backend        # terminal 1: cd backend && $env:DEMO_MODE=1 && python -m uvicorn app.main:app --port 8000 && http://localhost:8000  (DEMO_MODE=1 turns on /demo/*)
+make frontend       # terminal 2: cd frontend && npm run dev && http://localhost:5173  (Vite proxies /api and /demo to port 8000)
 ```
 
 No backend? `VITE_USE_MOCK=1 make frontend` serves saved responses from `frontend/src/mocks/` (a yellow banner says so).
