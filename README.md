@@ -11,15 +11,57 @@ and carries a QR code that anyone can verify, backed by a hash-chained, tamper-e
 
 ## Run it
 
-Needs Python 3.12 and Node 22.
+Requirements: Python 3.12, Node 22.
 
 ```bash
-git clone <this repo> && cd Bhumi_Kroy
-make setup          # pip install -r backend/requirements-dev.txt  +  cd frontend && npm ci
-make seed           # optional: the backend seeds itself on first start
-open two terminal   # one for backend and one for frontend
-make backend        # terminal 1: cd backend && $env:DEMO_MODE=1 && python -m uvicorn app.main:app --port 8000 && http://localhost:8000  (DEMO_MODE=1 turns on /demo/*)
-make frontend       # terminal 2: cd frontend && npm run dev && http://localhost:5173  (Vite proxies /api and /demo to port 8000)
+git clone <repo-url>
+cd Bhumi_Kroy
+make setup     # installs backend (pip) and frontend (npm ci) dependencies
+```
+
+Open **two terminals** from the repo root.
+
+**Terminal 1: backend** (http://localhost:8000)
+
+```bash
+make backend
+```
+
+**Terminal 2: frontend** (http://localhost:5173, Vite proxies `/api` and `/demo` to port 8000)
+
+```bash
+make frontend
+```
+
+The backend seeds the demo data itself on first start. To re-seed manually, run `make seed`.
+
+`DEMO_MODE=1` enables the `/demo/*` endpoints. `make backend` sets it for you.
+
+### Without `make` (Windows PowerShell)
+
+```powershell
+# one-time setup
+pip install -r backend/requirements-dev.txt
+cd frontend; npm ci; cd ..
+
+# terminal 1
+cd backend
+$env:DEMO_MODE = "1"
+python -m uvicorn app.main:app --port 8000
+
+# terminal 2
+cd frontend
+npm run dev
+```
+
+### Without `make` (macOS / Linux)
+
+```bash
+# terminal 1
+cd backend && DEMO_MODE=1 python -m uvicorn app.main:app --port 8000
+
+# terminal 2
+cd frontend && npm run dev
 ```
 
 No backend? `VITE_USE_MOCK=1 make frontend` serves saved responses from `frontend/src/mocks/` (a yellow banner says so).
