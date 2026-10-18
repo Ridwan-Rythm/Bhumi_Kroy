@@ -1,0 +1,21 @@
+# Lint config for `ruff check backend` (CI). Format-neutral: we lint, we do not auto-format.
+line-length = 120
+target-version = "py312"
+
+[lint]
+select = ["E", "F", "W", "I", "UP", "B", "SIM"]
+ignore = [
+  "B904",   # "raise ... from" inside except: the services re-raise AppError deliberately
+]
+
+[lint.flake8-bugbear]
+# FastAPI's standard dependency-injection idiom.
+extend-immutable-calls = ["fastapi.Depends"]
+
+[lint.isort]
+known-first-party = ["app", "seed", "tests"]
+
+[lint.per-file-ignores]
+# Data tables with Bangla text and compact test fixtures read better on one line.
+"seed/build_golden.py" = ["E501"]
+"tests/**" = ["E501"]

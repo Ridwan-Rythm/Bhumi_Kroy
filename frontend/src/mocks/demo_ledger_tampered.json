@@ -1,0 +1,66 @@
+{
+  "plot_id": "P-001",
+  "ok": false,
+  "broken_at_seq": 5,
+  "reason": "hash_mismatch",
+  "entries": [
+    {
+      "seq": 1,
+      "ts": "2026-10-01T00:00:00+06:00",
+      "source": "land_records",
+      "record_id": "LND-0001",
+      "record_hash": "sha256:137b4c3900d019cf6a74309d9f0dfcabe08b6b54f1ff3d67b18bb1dd300480df",
+      "prev_hash": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+      "entry_hash": "sha256:bac1c49c0fdbb341860d348b3514de6bea9c46e354786e500d90a3fed3f6f4ba",
+      "status": "ok"
+    },
+    {
+      "seq": 2,
+      "ts": "2026-10-01T00:00:00+06:00",
+      "source": "mutation",
+      "record_id": "MUT-0001",
+      "record_hash": "sha256:4d7fbbac64906f2689b086000893abd892fb68e7b66c5fcc43c446e19e580d0d",
+      "prev_hash": "sha256:bac1c49c0fdbb341860d348b3514de6bea9c46e354786e500d90a3fed3f6f4ba",
+      "entry_hash": "sha256:ad4c83ac3eda20f48e3f330dec520833dfdb44be7c55f41bc92cd890140c9892",
+      "status": "ok"
+    },
+    {
+      "seq": 3,
+      "ts": "2026-10-01T00:00:00+06:00",
+      "source": "land_records",
+      "record_id": "LND-0002",
+      "record_hash": "sha256:64c49e7b81c0bd69008a58fca6ce0bce6ae237c19e8de7102758c4e781c25ee5",
+      "prev_hash": "sha256:ad4c83ac3eda20f48e3f330dec520833dfdb44be7c55f41bc92cd890140c9892",
+      "entry_hash": "sha256:89001917fbccc813a65602164e6090d7b3e9f3a5fc6e4f992087b712bc58b567",
+      "status": "ok"
+    },
+    {
+      "seq": 4,
+      "ts": "2026-10-01T00:00:00+06:00",
+      "source": "registry",
+      "record_id": "REG-0001",
+      "record_hash": "sha256:3c20d438d8959498901c28a3de6dcc54ed4b360eaf3015d1d2664f9ad0814a07",
+      "prev_hash": "sha256:89001917fbccc813a65602164e6090d7b3e9f3a5fc6e4f992087b712bc58b567",
+      "entry_hash": "sha256:465f73394a67615861951fa061cacf72fe59c8e3c0bf2802cdc62e1d4c9e3254",
+      "status": "ok"
+    },
+    {
+      "seq": 5,
+      "ts": "2026-10-01T00:00:00+06:00",
+      "source": "land_records",
+      "record_id": "LND-0003",
+      "record_hash": "sha256:fce0a180158477bea2ecd2219c1ab73fdcf95947b9fd996bc5cc3a0f2f87196d",
+      "prev_hash": "sha256:465f73394a67615861951fa061cacf72fe59c8e3c0bf2802cdc62e1d4c9e3254",
+      "entry_hash": "sha256:72e3667e7b264c6578cef1fe1261b0a64bce025a0ed4b9e9d4eb58ca00d4e11e",
+      "status": "broken"
+    }
+  ],
+  "checkpoint": {
+    "height": 5,
+    "head_hash": "sha256:72e3667e7b264c6578cef1fe1261b0a64bce025a0ed4b9e9d4eb58ca00d4e11e",
+    "ts": "2026-10-01T00:00:00+06:00",
+    "key_id": "demo-2026-01",
+    "signature_b64": "uBzdxuz0aiimlhO1ZfQE1cOSCha588QVMm5iEVvpL_QdA94bQO0K5biU6uW0-WZK0pNVFK2k4oLP8NhIPMOXAg",
+    "valid": true
+  }
+}

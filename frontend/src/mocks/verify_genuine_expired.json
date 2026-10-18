@@ -1,0 +1,19 @@
+{
+  "state": "GENUINE_EXPIRED",
+  "signature_valid": true,
+  "report": {
+    "report_id": "RPT-2026-000001",
+    "short_code": "M9EP-XBC5",
+    "plot_id": "P-001",
+    "verdict": "GREEN",
+    "issued_at": "2026-10-17T10:15:00+06:00",
+    "valid_until": "2026-10-24T10:15:00+06:00"
+  },
+  "diff": null,
+  "ledger": {
+    "ok": true,
+    "broken_at_seq": null,
+    "reason": null
+  },
+  "checked_at": "2026-10-25T10:15:00+06:00"
+}

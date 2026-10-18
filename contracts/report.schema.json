@@ -1,0 +1,822 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://landcheck.example/contracts/report.schema.json",
+  "title": "Report",
+  "$defs": {
+    "Checkpoint": {
+      "additionalProperties": false,
+      "properties": {
+        "height": {
+          "title": "Height",
+          "type": "integer"
+        },
+        "head_hash": {
+          "title": "Head Hash",
+          "type": "string"
+        },
+        "ts": {
+          "title": "Ts",
+          "type": "string"
+        },
+        "key_id": {
+          "title": "Key Id",
+          "type": "string"
+        },
+        "signature_b64": {
+          "title": "Signature B64",
+          "type": "string"
+        }
+      },
+      "required": [
+        "height",
+        "head_hash",
+        "ts",
+        "key_id",
+        "signature_b64"
+      ],
+      "title": "Checkpoint",
+      "type": "object"
+    },
+    "Consents": {
+      "additionalProperties": false,
+      "properties": {
+        "bank": {
+          "title": "Bank",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "bank"
+      ],
+      "title": "Consents",
+      "type": "object"
+    },
+    "Finding": {
+      "additionalProperties": false,
+      "properties": {
+        "rule_id": {
+          "title": "Rule Id",
+          "type": "string"
+        },
+        "severity": {
+          "enum": [
+            "INTEGRITY",
+            "CRITICAL",
+            "HIGH",
+            "MEDIUM",
+            "INFO",
+            "COVERAGE"
+          ],
+          "title": "Severity",
+          "type": "string"
+        },
+        "confidence": {
+          "enum": [
+            "HIGH",
+            "MEDIUM",
+            "LOW"
+          ],
+          "title": "Confidence",
+          "type": "string"
+        },
+        "question": {
+          "anyOf": [
+            {
+              "enum": [
+                "Q1",
+                "Q2",
+                "Q3",
+                "Q4",
+                "Q5",
+                "Q6"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Question"
+        },
+        "evidence": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Evidence",
+          "type": "array"
+        },
+        "params": {
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "title": "Params",
+          "type": "object"
+        }
+      },
+      "required": [
+        "rule_id",
+        "severity",
+        "confidence",
+        "question",
+        "evidence",
+        "params"
+      ],
+      "title": "Finding",
+      "type": "object"
+    },
+    "HoldersSummary": {
+      "additionalProperties": false,
+      "properties": {
+        "holder_count": {
+          "title": "Holder Count",
+          "type": "integer"
+        },
+        "seller_share": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Seller Share"
+        }
+      },
+      "required": [
+        "holder_count",
+        "seller_share"
+      ],
+      "title": "HoldersSummary",
+      "type": "object"
+    },
+    "LedgerBlock": {
+      "additionalProperties": false,
+      "properties": {
+        "ok": {
+          "title": "Ok",
+          "type": "boolean"
+        },
+        "broken_at_seq": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Broken At Seq"
+        },
+        "reason": {
+          "anyOf": [
+            {
+              "enum": [
+                "hash_mismatch",
+                "link_broken",
+                "checkpoint_mismatch",
+                "signature_invalid",
+                "height_mismatch"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Reason"
+        },
+        "height": {
+          "title": "Height",
+          "type": "integer"
+        },
+        "head_hash": {
+          "title": "Head Hash",
+          "type": "string"
+        },
+        "checkpoint": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Checkpoint"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "ok",
+        "broken_at_seq",
+        "reason",
+        "height",
+        "head_hash",
+        "checkpoint"
+      ],
+      "title": "LedgerBlock",
+      "type": "object"
+    },
+    "NotChecked": {
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "title": "Code",
+          "type": "string"
+        },
+        "params": {
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "title": "Params",
+          "type": "object"
+        }
+      },
+      "required": [
+        "code",
+        "params"
+      ],
+      "title": "NotChecked",
+      "type": "object"
+    },
+    "ReportPlot": {
+      "additionalProperties": false,
+      "properties": {
+        "plot_id": {
+          "title": "Plot Id",
+          "type": "string"
+        },
+        "district_id": {
+          "title": "District Id",
+          "type": "string"
+        },
+        "upazila_id": {
+          "title": "Upazila Id",
+          "type": "string"
+        },
+        "mouza_id": {
+          "title": "Mouza Id",
+          "type": "string"
+        },
+        "jl_no": {
+          "title": "Jl No",
+          "type": "string"
+        },
+        "survey": {
+          "anyOf": [
+            {
+              "enum": [
+                "CS",
+                "SA",
+                "RS",
+                "BS"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Survey"
+        },
+        "khatian_no": {
+          "title": "Khatian No",
+          "type": "string"
+        },
+        "dag_no": {
+          "title": "Dag No",
+          "type": "string"
+        },
+        "area_decimal": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Area Decimal"
+        },
+        "land_class": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Land Class"
+        }
+      },
+      "required": [
+        "plot_id",
+        "district_id",
+        "upazila_id",
+        "mouza_id",
+        "jl_no",
+        "survey",
+        "khatian_no",
+        "dag_no",
+        "area_decimal",
+        "land_class"
+      ],
+      "title": "ReportPlot",
+      "type": "object"
+    },
+    "ReportSeller": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "father_or_husband": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Father Or Husband"
+        },
+        "match": {
+          "$ref": "#/$defs/SellerMatch"
+        }
+      },
+      "required": [
+        "name",
+        "father_or_husband",
+        "match"
+      ],
+      "title": "ReportSeller",
+      "type": "object"
+    },
+    "SellerMatch": {
+      "additionalProperties": false,
+      "properties": {
+        "tier": {
+          "enum": [
+            "STRONG",
+            "PROBABLE",
+            "WEAK",
+            "NONE",
+            "NOT_RUN"
+          ],
+          "title": "Tier",
+          "type": "string"
+        },
+        "score": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Score"
+        }
+      },
+      "required": [
+        "tier",
+        "score"
+      ],
+      "title": "SellerMatch",
+      "type": "object"
+    },
+    "SourceResult": {
+      "additionalProperties": false,
+      "properties": {
+        "source": {
+          "enum": [
+            "land_records",
+            "registry",
+            "mutation",
+            "court",
+            "khas",
+            "bank"
+          ],
+          "title": "Source",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "OK",
+            "NO_RECORD",
+            "PARTIAL",
+            "STALE",
+            "UNAVAILABLE",
+            "ERROR"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "as_of": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "As Of"
+        },
+        "maturity": {
+          "enum": [
+            "M0",
+            "M1",
+            "M2",
+            "M3",
+            "M4"
+          ],
+          "title": "Maturity",
+          "type": "string"
+        },
+        "linkage": {
+          "anyOf": [
+            {
+              "enum": [
+                "EXACT",
+                "TEXT_MATCH",
+                "PARTY_NAME_ONLY"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Linkage"
+        },
+        "latency_ms": {
+          "title": "Latency Ms",
+          "type": "integer"
+        },
+        "record_count": {
+          "title": "Record Count",
+          "type": "integer"
+        },
+        "reason": {
+          "anyOf": [
+            {
+              "enum": [
+                "consent_required",
+                "timeout",
+                "outage",
+                "stale",
+                "not_digitised"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Reason"
+        }
+      },
+      "required": [
+        "source",
+        "status",
+        "as_of",
+        "maturity",
+        "linkage",
+        "latency_ms",
+        "record_count",
+        "reason"
+      ],
+      "title": "SourceResult",
+      "type": "object"
+    },
+    "TimelineEvent": {
+      "additionalProperties": false,
+      "properties": {
+        "date": {
+          "title": "Date",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "SURVEY_ENTRY",
+            "SALE",
+            "GIFT",
+            "INHERITANCE",
+            "PARTITION",
+            "COURT_DECREE",
+            "ACQUISITION",
+            "MORTGAGE",
+            "MORTGAGE_RELEASE",
+            "LT_NOTICE",
+            "MUTATION_PENDING",
+            "MUTATION_APPLIED"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "survey": {
+          "anyOf": [
+            {
+              "enum": [
+                "CS",
+                "SA",
+                "RS",
+                "BS"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Survey"
+        },
+        "from_masked": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "From Masked"
+        },
+        "to_masked": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "To Masked"
+        },
+        "share": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Share"
+        },
+        "area_decimal": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Area Decimal"
+        },
+        "record_ref": {
+          "title": "Record Ref",
+          "type": "string"
+        },
+        "source": {
+          "enum": [
+            "land_records",
+            "registry",
+            "mutation",
+            "court",
+            "khas",
+            "bank"
+          ],
+          "title": "Source",
+          "type": "string"
+        },
+        "flagged_by": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Flagged By",
+          "type": "array"
+        }
+      },
+      "required": [
+        "date",
+        "kind",
+        "survey",
+        "from_masked",
+        "to_masked",
+        "share",
+        "area_decimal",
+        "record_ref",
+        "source",
+        "flagged_by"
+      ],
+      "title": "TimelineEvent",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "report_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Report Id"
+    },
+    "short_code": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Short Code"
+    },
+    "synthetic": {
+      "const": true,
+      "title": "Synthetic",
+      "type": "boolean"
+    },
+    "issued_at": {
+      "title": "Issued At",
+      "type": "string"
+    },
+    "valid_until": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Valid Until"
+    },
+    "plot": {
+      "$ref": "#/$defs/ReportPlot"
+    },
+    "seller": {
+      "$ref": "#/$defs/ReportSeller"
+    },
+    "consents": {
+      "$ref": "#/$defs/Consents"
+    },
+    "verdict": {
+      "enum": [
+        "GREEN",
+        "GREY",
+        "AMBER",
+        "RED",
+        "INTEGRITY_ALERT"
+      ],
+      "title": "Verdict",
+      "type": "string"
+    },
+    "coverage": {
+      "additionalProperties": {
+        "enum": [
+          "COVERED",
+          "PARTIAL",
+          "NOT_COVERED"
+        ],
+        "type": "string"
+      },
+      "propertyNames": {
+        "enum": [
+          "Q1",
+          "Q2",
+          "Q3",
+          "Q4",
+          "Q5",
+          "Q6"
+        ]
+      },
+      "title": "Coverage",
+      "type": "object"
+    },
+    "findings": {
+      "items": {
+        "$ref": "#/$defs/Finding"
+      },
+      "title": "Findings",
+      "type": "array"
+    },
+    "sources": {
+      "items": {
+        "$ref": "#/$defs/SourceResult"
+      },
+      "title": "Sources",
+      "type": "array"
+    },
+    "holders_summary": {
+      "$ref": "#/$defs/HoldersSummary"
+    },
+    "timeline": {
+      "items": {
+        "$ref": "#/$defs/TimelineEvent"
+      },
+      "title": "Timeline",
+      "type": "array"
+    },
+    "not_checked": {
+      "items": {
+        "$ref": "#/$defs/NotChecked"
+      },
+      "title": "Not Checked",
+      "type": "array"
+    },
+    "ledger": {
+      "$ref": "#/$defs/LedgerBlock"
+    },
+    "key_id": {
+      "title": "Key Id",
+      "type": "string"
+    },
+    "signed_payload_b64": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Signed Payload B64"
+    },
+    "signature_b64": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Signature B64"
+    }
+  },
+  "required": [
+    "report_id",
+    "short_code",
+    "synthetic",
+    "issued_at",
+    "valid_until",
+    "plot",
+    "seller",
+    "consents",
+    "verdict",
+    "coverage",
+    "findings",
+    "sources",
+    "holders_summary",
+    "timeline",
+    "not_checked",
+    "ledger",
+    "key_id",
+    "signed_payload_b64",
+    "signature_b64"
+  ],
+  "type": "object"
+}

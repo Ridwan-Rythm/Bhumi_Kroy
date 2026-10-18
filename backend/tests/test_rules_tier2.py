@@ -1,6 +1,7 @@
 """Tier-2 rules: hand-built contexts plus the five extra plots (seed/golden/extra_*.json)."""
 import asyncio
 import json
+from pathlib import Path
 
 from app.engine.pipeline import run_check
 from seed import load
@@ -122,7 +123,7 @@ def test_extra_plots_trigger_their_rule_and_no_golden_does():
 
 def test_no_golden_sample_triggers_a_tier2_rule():
     conn = make_db()
-    samples = json.load(open("seed/golden/samples.json", encoding="utf-8"))
+    samples = json.loads(Path("seed/golden/samples.json").read_text(encoding="utf-8"))
     for s in samples:
         if s["sample_id"] in ("P-008", "P-008B"):
             continue

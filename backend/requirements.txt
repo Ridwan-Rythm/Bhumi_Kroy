@@ -1,9 +1,5 @@
-fastapi
-uvicorn[standard]
-pydantic>=2
-cryptography
-pytest
-pytest-asyncio
-httpx
-jsonschema
-ruff
+# Runtime dependencies, pinned to the versions the tests were run with.
+fastapi==0.143.3
+uvicorn[standard]==0.54.0
+pydantic==2.14.1
+cryptography==46.0.6

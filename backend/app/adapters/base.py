@@ -76,7 +76,7 @@ class BaseAdapter:
         latency = int(cfg["latency_ms"])
         try:
             await asyncio.wait_for(asyncio.sleep(latency / 1000), timeout=ctx.timeout_s)
-        except asyncio.TimeoutError:
+        except TimeoutError:
             return self._unavailable(cfg, "timeout", int(ctx.timeout_s * 1000))
         if cfg["status"] in ("UNAVAILABLE", "ERROR"):
             return SourceResult(self.source, cfg["status"], None, cfg["maturity"], cfg["linkage"], latency, 0,

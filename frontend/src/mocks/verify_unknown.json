@@ -1,0 +1,12 @@
+{
+  "state": "UNKNOWN",
+  "signature_valid": false,
+  "report": null,
+  "diff": null,
+  "ledger": {
+    "ok": false,
+    "broken_at_seq": null,
+    "reason": null
+  },
+  "checked_at": "2026-10-17T10:15:00+06:00"
+}

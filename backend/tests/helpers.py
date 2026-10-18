@@ -1,7 +1,9 @@
 """Shared test helpers. Plain functions only, so tests run under pytest and the local runner."""
 from __future__ import annotations
 
+import atexit
 import os
+import shutil
 import tempfile
 
 
@@ -33,12 +35,28 @@ def fresh_key():
     signer.reset_key_cache()
 
 
+_TEMP_DIRS: list[str] = []
+
+
+@atexit.register
+def _cleanup_temp_dirs() -> None:
+    for d in _TEMP_DIRS:
+        shutil.rmtree(d, ignore_errors=True)
+
+
+def temp_dir(prefix: str = "landcheck_") -> str:
+    """A temp folder that is deleted when the test run ends (no leftovers in /tmp)."""
+    d = tempfile.mkdtemp(prefix=prefix)
+    _TEMP_DIRS.append(d)
+    return d
+
+
 def make_db(seed: int = 42):
     """Seeded SQLite DB in a temp dir. Returns an open connection."""
     from app.core import db
     from seed import load
     fresh_key()
-    path = os.path.join(tempfile.mkdtemp(prefix="landcheck_"), "t.db")
+    path = os.path.join(temp_dir(), "t.db")
     conn = db.connect(path)
     load.load(conn, seed=seed)
     return conn

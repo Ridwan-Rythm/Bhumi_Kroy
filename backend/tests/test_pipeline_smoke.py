@@ -1,11 +1,12 @@
 import asyncio
 import json
+from pathlib import Path
 
 from app.engine.pipeline import run_check
 from tests.contract_shape import check_report
 from tests.helpers import make_db
 
-SAMPLES = json.load(open("seed/golden/samples.json", encoding="utf-8"))
+SAMPLES = json.loads(Path("seed/golden/samples.json").read_text(encoding="utf-8"))
 
 
 def check(conn, sample_id):

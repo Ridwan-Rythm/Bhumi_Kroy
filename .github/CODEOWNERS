@@ -1,0 +1,25 @@
+# Ownership from contracts/00_SHARED_CONTRACT.md section 2.
+# Replace @OWNER_A / @OWNER_B with the two GitHub usernames (A = Ridwan, backend; B = Nazifa, frontend).
+# Until then GitHub shows these lines as invalid owners; nothing else is affected.
+/contracts/                          @OWNER_A
+/backend/                            @OWNER_A
+/backend/app/namematch/              @OWNER_B
+/backend/tests/namematch/            @OWNER_B
+/frontend/                           @OWNER_B
+/README.md                           @OWNER_B
+/docs/concept_note/                  @OWNER_B
+/docs/slides/                        @OWNER_B
+/docs/DEMO_SCRIPT.md                 @OWNER_B
+/docs/VIDEO_STORYBOARD.md            @OWNER_B
+/docs/ai_usage/nazifa.md             @OWNER_B
+/docs/PLAN.md                        @OWNER_A
+/docs/ARCHITECTURE.md                @OWNER_A
+/docs/EVALUATION.md                  @OWNER_A
+/docs/backend_notes.md               @OWNER_A
+/docs/ai_usage/ridwan.md             @OWNER_A
+/Makefile                            @OWNER_A
+/.github/                            @OWNER_A
+/.gitignore                          @OWNER_A
+/.gitattributes                      @OWNER_A
+/LICENSE                             @OWNER_A
+/CLAUDE.md                           @OWNER_A

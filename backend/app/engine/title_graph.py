@@ -129,7 +129,7 @@ class TitleGraph:
 
     def area_drifts(self) -> list[dict]:
         out = []
-        for a, b in zip(self.snapshots, self.snapshots[1:]):
+        for a, b in zip(self.snapshots, self.snapshots[1:], strict=False):
             if not a.get("area_decimal"):
                 continue
             pct = abs(b["area_decimal"] - a["area_decimal"]) / a["area_decimal"] * 100
@@ -140,7 +140,7 @@ class TitleGraph:
 
     def class_changes(self) -> list[dict]:
         out = []
-        for a, b in zip(self.snapshots, self.snapshots[1:]):
+        for a, b in zip(self.snapshots, self.snapshots[1:], strict=False):
             if a["land_class"] != b["land_class"]:
                 out.append({"from_class": a["land_class"], "to_class": b["land_class"], "record_ref": b["record_id"],
                             "explained": self.explained_between(a["date"], b["date"])})

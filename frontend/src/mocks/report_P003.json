@@ -1,0 +1,294 @@
+{
+  "report_id": "RPT-2026-000003",
+  "short_code": "BCQQ-CHCU",
+  "synthetic": true,
+  "issued_at": "2026-10-17T10:15:00+06:00",
+  "valid_until": "2026-10-24T10:15:00+06:00",
+  "plot": {
+    "plot_id": "P-003",
+    "district_id": "gazipur",
+    "upazila_id": "kapasia",
+    "mouza_id": "m-gzp-kap-01",
+    "jl_no": "8",
+    "survey": "BS",
+    "khatian_no": "1540",
+    "dag_no": "6104",
+    "area_decimal": 33.0,
+    "land_class": "ধান"
+  },
+  "seller": {
+    "name": "আনোয়ার হোসেন",
+    "father_or_husband": "মৃত কামাল আহমেদ",
+    "match": {
+      "tier": "STRONG",
+      "score": 1.0
+    }
+  },
+  "consents": {
+    "bank": true
+  },
+  "verdict": "RED",
+  "coverage": {
+    "Q1": "COVERED",
+    "Q2": "COVERED",
+    "Q3": "COVERED",
+    "Q4": "COVERED",
+    "Q5": "COVERED",
+    "Q6": "COVERED"
+  },
+  "findings": [
+    {
+      "rule_id": "R-LIEN-01",
+      "severity": "CRITICAL",
+      "confidence": "HIGH",
+      "question": "Q5",
+      "evidence": [
+        "BNK-0001"
+      ],
+      "params": {
+        "lien_ref": "BNK-0001",
+        "bank_name": "পদ্মা পল্লী ঋণ ব্যাংক"
+      }
+    },
+    {
+      "rule_id": "R-DISP-03",
+      "severity": "HIGH",
+      "confidence": "HIGH",
+      "question": "Q3",
+      "evidence": [
+        "MUT-0004"
+      ],
+      "params": {
+        "mutation_ref": "MUT-0004",
+        "applicant_is_seller": false
+      }
+    },
+    {
+      "rule_id": "R-INFO-01",
+      "severity": "INFO",
+      "confidence": "HIGH",
+      "question": "Q1",
+      "evidence": [],
+      "params": {}
+    },
+    {
+      "rule_id": "R-INFO-02",
+      "severity": "INFO",
+      "confidence": "HIGH",
+      "question": "Q2",
+      "evidence": [],
+      "params": {
+        "depth": 3
+      }
+    },
+    {
+      "rule_id": "R-INFO-03",
+      "severity": "INFO",
+      "confidence": "HIGH",
+      "question": "Q2",
+      "evidence": [],
+      "params": {
+        "last_transfer_date": "2010-05-18"
+      }
+    }
+  ],
+  "sources": [
+    {
+      "source": "land_records",
+      "status": "OK",
+      "as_of": "2026-10-16T10:15:00+06:00",
+      "maturity": "M3",
+      "linkage": null,
+      "latency_ms": 120,
+      "record_count": 3,
+      "reason": null
+    },
+    {
+      "source": "registry",
+      "status": "OK",
+      "as_of": "2026-10-16T10:15:00+06:00",
+      "maturity": "M2",
+      "linkage": null,
+      "latency_ms": 200,
+      "record_count": 1,
+      "reason": null
+    },
+    {
+      "source": "mutation",
+      "status": "OK",
+      "as_of": "2026-10-16T10:15:00+06:00",
+      "maturity": "M3",
+      "linkage": null,
+      "latency_ms": 150,
+      "record_count": 2,
+      "reason": null
+    },
+    {
+      "source": "court",
+      "status": "NO_RECORD",
+      "as_of": "2026-10-16T10:15:00+06:00",
+      "maturity": "M2",
+      "linkage": "TEXT_MATCH",
+      "latency_ms": 250,
+      "record_count": 0,
+      "reason": null
+    },
+    {
+      "source": "khas",
+      "status": "OK",
+      "as_of": "2026-10-16T10:15:00+06:00",
+      "maturity": "M2",
+      "linkage": null,
+      "latency_ms": 180,
+      "record_count": 0,
+      "reason": null
+    },
+    {
+      "source": "bank",
+      "status": "OK",
+      "as_of": "2026-10-16T10:15:00+06:00",
+      "maturity": "M3",
+      "linkage": null,
+      "latency_ms": 220,
+      "record_count": 1,
+      "reason": null
+    }
+  ],
+  "holders_summary": {
+    "holder_count": 1,
+    "seller_share": "1"
+  },
+  "timeline": [
+    {
+      "date": "1926-03-14",
+      "kind": "SURVEY_ENTRY",
+      "survey": "CS",
+      "from_masked": null,
+      "to_masked": "হা** উ***",
+      "share": null,
+      "area_decimal": 33.0,
+      "record_ref": "LND-0007",
+      "source": "land_records",
+      "flagged_by": []
+    },
+    {
+      "date": "1985-07-02",
+      "kind": "INHERITANCE",
+      "survey": null,
+      "from_masked": "হা** উ***",
+      "to_masked": "ম** ম***",
+      "share": null,
+      "area_decimal": null,
+      "record_ref": "MUT-0003",
+      "source": "mutation",
+      "flagged_by": []
+    },
+    {
+      "date": "1993-11-20",
+      "kind": "SURVEY_ENTRY",
+      "survey": "RS",
+      "from_masked": null,
+      "to_masked": "ম** ম***",
+      "share": null,
+      "area_decimal": 33.0,
+      "record_ref": "LND-0008",
+      "source": "land_records",
+      "flagged_by": []
+    },
+    {
+      "date": "2010-05-18",
+      "kind": "SALE",
+      "survey": null,
+      "from_masked": "ম** ম***",
+      "to_masked": "আ*** হো**",
+      "share": "1",
+      "area_decimal": 33.0,
+      "record_ref": "REG-0003",
+      "source": "registry",
+      "flagged_by": []
+    },
+    {
+      "date": "2018-02-09",
+      "kind": "SURVEY_ENTRY",
+      "survey": "BS",
+      "from_masked": null,
+      "to_masked": "আ*** হো**",
+      "share": null,
+      "area_decimal": 33.0,
+      "record_ref": "LND-0009",
+      "source": "land_records",
+      "flagged_by": []
+    },
+    {
+      "date": "2023-08-15",
+      "kind": "MORTGAGE",
+      "survey": null,
+      "from_masked": "আ*** হো**",
+      "to_masked": "পদ্মা পল্লী ঋণ ব্যাংক",
+      "share": null,
+      "area_decimal": null,
+      "record_ref": "BNK-0001",
+      "source": "bank",
+      "flagged_by": [
+        "R-LIEN-01"
+      ]
+    },
+    {
+      "date": "2026-09-20",
+      "kind": "MUTATION_PENDING",
+      "survey": null,
+      "from_masked": null,
+      "to_masked": "আ** ই***",
+      "share": null,
+      "area_decimal": null,
+      "record_ref": "MUT-0004",
+      "source": "mutation",
+      "flagged_by": [
+        "R-DISP-03"
+      ]
+    }
+  ],
+  "not_checked": [
+    {
+      "code": "static_physical_possession",
+      "params": {}
+    },
+    {
+      "code": "static_boundaries",
+      "params": {}
+    },
+    {
+      "code": "static_unregistered_agreements",
+      "params": {}
+    },
+    {
+      "code": "static_equitable_mortgage",
+      "params": {}
+    },
+    {
+      "code": "static_seller_documents",
+      "params": {}
+    },
+    {
+      "code": "static_legal_review",
+      "params": {}
+    }
+  ],
+  "ledger": {
+    "ok": true,
+    "broken_at_seq": null,
+    "reason": null,
+    "height": 7,
+    "head_hash": "sha256:19b8c271a4ca684f5a0ec6eda6dd9e34d4c723b3d08a0a29ebeb711a26ecde55",
+    "checkpoint": {
+      "height": 7,
+      "head_hash": "sha256:19b8c271a4ca684f5a0ec6eda6dd9e34d4c723b3d08a0a29ebeb711a26ecde55",
+      "ts": "2026-10-17T10:15:00+06:00",
+      "key_id": "demo-2026-01",
+      "signature_b64": "ByuEKRo940wizHXydyYtSYGyEAFkGTARkCi3DZFwk-FcaJCTvH1oYtPjFBZ4MgjaPrHl--pZXhQaqmJa-wQTAw"
+    }
+  },
+  "key_id": "demo-2026-01",
+  "signed_payload_b64": "eyJmaW5kaW5nc19oYXNoIjoic2hhMjU2OjZhNDQ5MGVjYTQyMTViOWE0OWQ4MmJlMDE3Yjk4Y2YzZTc4MGQ2YjBhOWQ5MDU0ZTM0NjU1ZjBlM2NmZjNhMTkiLCJpc3N1ZWRfYXQiOiIyMDI2LTEwLTE3VDEwOjE1OjAwKzA2OjAwIiwia2V5X2lkIjoiZGVtby0yMDI2LTAxIiwibGVkZ2VyX2hlYWQiOiJzaGEyNTY6MTliOGMyNzFhNGNhNjg0ZjVhMGVjNmVkYTZkZDllMzRkNGM3MjNiM2QwOGEwYTI5ZWJlYjcxMWEyNmVjZGU1NSIsImxlZGdlcl9oZWlnaHQiOjcsInBsb3RfaWQiOiJQLTAwMyIsInJlcG9ydF9pZCI6IlJQVC0yMDI2LTAwMDAwMyIsInNob3J0X2NvZGUiOiJCQ1FRLUNIQ1UiLCJ2IjoxLCJ2YWxpZF91bnRpbCI6IjIwMjYtMTAtMjRUMTA6MTU6MDArMDY6MDAiLCJ2ZXJkaWN0IjoiUkVEIn0",
+  "signature_b64": "L0tQe4TcOEurIc04Sc0APNBJKmQF4Pt4oBOBx7-c8JbNklDvo4HylC8XsbfTmGXqUekvhb1sESDsKQKwL-wCBA"
+}
