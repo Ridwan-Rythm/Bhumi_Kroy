@@ -11,21 +11,22 @@ import { Section } from "./ui";
 const QUESTIONS: Q[] = ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6"];
 const COVERAGE_ICON: Record<Coverage, string> = { COVERED: "✓", PARTIAL: "◐", NOT_COVERED: "✕" };
 const COVERAGE_BOX: Record<Coverage, string> = {
-  COVERED: "border-green-700",
-  PARTIAL: "border-amber-600",
-  NOT_COVERED: "border-gray-500 border-dashed",
+  COVERED: "border-green-600 bg-green-50/70",
+  PARTIAL: "border-amber-500 bg-amber-50/70",
+  NOT_COVERED: "border-slate-400 border-dashed bg-slate-50/70",
 };
 
 export function VerdictBanner({ verdict }: { verdict: Report["verdict"] }) {
   const { t } = useTranslation();
   const style = VERDICT_STYLE[verdict];
   return (
-    <div role="status" className={`rounded-lg border-4 p-4 ${style.box}`} data-verdict={verdict}>
-      <p className="flex items-center gap-3 text-2xl font-bold">
-        <span aria-hidden="true" className="text-3xl">{style.icon}</span>
+    <div role="status" className={`relative animate-pop overflow-hidden rounded-2xl border-2 border-l-[10px] p-5 shadow-lift sm:p-6 ${style.box}`} data-verdict={verdict}>
+      <span aria-hidden="true" className="print-hide-decor pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-current opacity-[.07]" />
+      <p className="relative flex items-center gap-4 text-2xl font-bold">
+        <span aria-hidden="true" className="relative flex h-14 w-14 shrink-0 items-center justify-center"><span className="print-hide-decor absolute inset-0 animate-ping2 rounded-full bg-current opacity-30" /><span className="relative flex h-14 w-14 items-center justify-center rounded-full bg-white text-3xl shadow-soft">{style.icon}</span></span>
         <span>{t(`verdict.${verdict}.label`)}</span>
       </p>
-      <p className="mt-2 text-base text-gray-900">{t(`verdict.${verdict}.summary`)}</p>
+      <p className="relative mt-3 text-base text-slate-900">{t(`verdict.${verdict}.summary`)}</p>
     </div>
   );
 }
@@ -35,7 +36,7 @@ function Summary({ report }: { report: Report }) {
   const lang = i18n.language;
   const { plot, seller } = report;
   return (
-    <dl className="mt-4 grid grid-cols-1 gap-2 text-base sm:grid-cols-2">
+    <dl className="stagger mt-5 grid grid-cols-1 gap-3 text-base sm:grid-cols-2 [&>div]:card [&>div]:card-hover [&>div]:p-4 [&_dt]:text-sm [&_dt]:uppercase [&_dt]:tracking-wide [&_dt]:text-brand-700">
       <div>
         <dt className="font-bold">{t("pages.result.plotTitle")}</dt>
         <dd>{t("pages.result.khatianDag", { khatian: plot.khatian_no, dag: plot.dag_no })}</dd>
@@ -53,7 +54,7 @@ function Summary({ report }: { report: Report }) {
       </div>
       <div>
         <dt className="font-bold">{t("pages.result.shortCode")}</dt>
-        <dd className="font-mono text-lg tracking-widest">{report.short_code ?? t("common.notAvailable")}</dd>
+        <dd className="font-mono text-xl font-bold tracking-widest text-brand-900">{report.short_code ?? t("common.notAvailable")}</dd>
       </div>
       <div>
         <dt className="font-bold">{t("pages.result.issued")}</dt>
@@ -72,11 +73,11 @@ function Summary({ report }: { report: Report }) {
 function Coverage_({ report }: { report: Report }) {
   const { t } = useTranslation();
   return (
-    <ul className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+    <ul className="stagger grid grid-cols-1 gap-3 sm:grid-cols-2">
       {QUESTIONS.map((q) => {
         const c = report.coverage[q];
         return (
-          <li key={q} className={`flex items-start gap-3 rounded border-2 p-2 ${COVERAGE_BOX[c]}`}>
+          <li key={q} className={`card-hover flex items-start gap-3 rounded-xl border-2 p-3 shadow-sm ${COVERAGE_BOX[c]}`}>
             <span aria-hidden="true" className="mt-0.5 w-6 text-center text-xl font-bold">{COVERAGE_ICON[c]}</span>
             <span>
               <span className="block">{t(`questions.${q}`)}</span>
@@ -93,20 +94,20 @@ function FindingCard({ f }: { f: Finding }) {
   const { t, i18n } = useTranslation();
   const text = findingText(t, i18n.language, f);
   return (
-    <li className="rounded border border-gray-300 p-3" data-rule={f.rule_id}>
+    <li className="card card-hover border-l-4 border-l-gold-500 p-4" data-rule={f.rule_id}>
       <p className="flex flex-wrap items-center gap-2">
-        <span className={`rounded px-2 py-0.5 text-sm font-bold ${SEVERITY_STYLE[f.severity] ?? ""}`}>{t(`severity.${f.severity}`)}</span>
-        <span className="text-sm text-gray-700">{t(`confidence.${f.confidence}`)}</span>
-        {f.question ? <span className="text-sm text-gray-700">{f.question}</span> : null}
+        <span className={`rounded-full px-3 py-0.5 text-sm font-bold ${SEVERITY_STYLE[f.severity] ?? ""}`}>{t(`severity.${f.severity}`)}</span>
+        <span className="text-sm text-slate-600">{t(`confidence.${f.confidence}`)}</span>
+        {f.question ? <span className="rounded-full bg-slate-100 px-2 text-sm text-slate-700">{f.question}</span> : null}
       </p>
-      <h3 className="mt-1 text-lg font-bold">{text.title}</h3>
+      <h3 className="mt-2 text-lg font-bold text-brand-900">{text.title}</h3>
       <p className="mt-1">{text.explain}</p>
-      <p className="mt-2">
-        <span className="font-bold">{t("rules.nextStep")}: </span>
+      <p className="mt-3 rounded-xl bg-brand-50 p-3">
+        <span className="font-bold text-brand-800">{t("rules.nextStep")}: </span>
         {text.next}
       </p>
       {f.evidence.length > 0 ? (
-        <p className="mt-2 text-sm text-gray-700">
+        <p className="mt-3 text-sm text-slate-600">
           {t("rules.evidence")}: <span className="font-mono">{f.evidence.join(", ")}</span>
         </p>
       ) : null}
@@ -118,14 +119,14 @@ function SourcesTable({ sources }: { sources: SourceResult[] }) {
   const { t, i18n } = useTranslation();
   const lang = i18n.language;
   return (
-    <ul className="divide-y divide-gray-200 rounded border border-gray-300">
+    <ul className="card divide-y divide-slate-200 overflow-hidden">
       {sources.map((s) => (
-        <li key={s.source} className="p-2">
+        <li key={s.source} className="p-3 transition-colors hover:bg-brand-50/70">
           <p className="flex flex-wrap justify-between gap-2">
-            <span className="font-bold">{t(`sources.${s.source}`)}</span>
-            <span>{t(`sourceStatus.${s.status}`)}</span>
+            <span className="font-bold text-brand-900">{t(`sources.${s.source}`)}</span>
+            <span className="rounded-full bg-brand-100 px-3 text-sm font-medium text-brand-800">{t(`sourceStatus.${s.status}`)}</span>
           </p>
-          <p className="text-sm text-gray-700">
+          <p className="mt-1 text-sm text-slate-600">
             {t("maturity.label", { level: s.maturity })}
             {s.as_of ? ` · ${t("pages.result.asOf", { date: fmtDate(s.as_of, lang) })}` : ""}
             {s.linkage ? ` · ${t(`linkage.${s.linkage}`)}` : ""}
@@ -143,9 +144,9 @@ function Timeline({ events }: { events: TimelineEvent[] }) {
   const lang = i18n.language;
   if (events.length === 0) return <p>{t("pages.result.noTimeline")}</p>;
   return (
-    <ol className="space-y-2 border-l-4 border-gray-300 pl-3">
+    <ol className="stagger relative space-y-3 border-l-4 border-brand-200 pl-5">
       {events.map((e) => (
-        <li key={`${e.record_ref}-${e.date}`} className={e.flagged_by.length ? "rounded bg-amber-50 p-1" : ""}>
+        <li key={`${e.record_ref}-${e.date}`} className={`relative rounded-xl p-2 transition-colors before:absolute before:-left-[1.95rem] before:top-3 before:h-3.5 before:w-3.5 before:rounded-full before:border-2 before:border-white before:bg-brand-500 before:shadow before:content-[''] hover:bg-brand-50/70 ${e.flagged_by.length ? "bg-amber-50 before:bg-amber-500" : ""}`}>
           <p className="font-bold">
             {fmtDate(e.date, lang)}: {t(`events.${e.kind}`)}
             {e.survey ? ` (${t(`surveyShort.${e.survey}`)})` : ""}
@@ -153,7 +154,7 @@ function Timeline({ events }: { events: TimelineEvent[] }) {
           {e.from_masked || e.to_masked ? (
             <p lang="bn">{t("pages.result.timelineMove", { from: e.from_masked ?? "—", to: e.to_masked ?? "—" })}</p>
           ) : null}
-          <p className="text-sm text-gray-700">
+          <p className="text-sm text-slate-600">
             <span className="font-mono">{e.record_ref}</span> · {t(`sources.${e.source}`)}
             {e.share ? ` · ${e.share}` : ""}
             {e.area_decimal !== null ? ` · ${t("pages.result.area", { area: fmtNumber(e.area_decimal, lang) })}` : ""}
@@ -170,8 +171,8 @@ export function LedgerLine({ report }: { report: Report }) {
   const { ledger } = report;
   const reason = ledger.reason ? localizeParams(t, i18n.language, { reason: ledger.reason }, "R-INT-01").reason : "";
   return (
-    <p>
-      <span aria-hidden="true" className="mr-1 font-bold">{ledger.ok ? "✓" : "✕"}</span>
+    <p className={`card flex items-center gap-3 p-4 font-medium ${ledger.ok ? "text-green-800" : "text-red-800"}`}>
+      <span aria-hidden="true" className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full font-bold text-white ${ledger.ok ? "bg-green-600" : "bg-red-700"}`}>{ledger.ok ? "✓" : "✕"}</span>
       {ledger.ok
         ? t("pages.result.ledgerOk", { height: fmtNumber(ledger.height, i18n.language) })
         : t("pages.result.ledgerBroken", { reason })}
@@ -193,9 +194,9 @@ export function VerifyQr({ report }: { report: Report }) {
   }, [url]);
   if (!url) return null;
   return (
-    <figure className="mt-2 inline-block text-center">
-      {src ? <img src={src} width={176} height={176} alt={t("pages.result.qrAlt")} /> : null}
-      <figcaption className="text-sm font-bold">{t("pages.result.qrTitle")}</figcaption>
+    <figure className="card card-hover mt-2 inline-block p-4 text-center">
+      {src ? <img src={src} width={176} height={176} alt={t("pages.result.qrAlt")} className="rounded-lg" /> : null}
+      <figcaption className="mt-2 text-sm font-bold text-brand-900">{t("pages.result.qrTitle")}</figcaption>
     </figure>
   );
 }
@@ -210,11 +211,11 @@ export default function ReportView({ report, forPrint = false }: { report: Repor
       <Section id="sec-coverage" title={t("pages.result.coverageTitle")}><Coverage_ report={report} /></Section>
       <Section id="sec-findings" title={t("pages.result.findingsTitle")}>
         {report.findings.length === 0 ? <p>{t("pages.result.noFindings")}</p> : (
-          <ul className="space-y-3">{report.findings.map((f, i) => <FindingCard key={`${f.rule_id}-${i}`} f={f} />)}</ul>
+          <ul className="stagger space-y-3">{report.findings.map((f, i) => <FindingCard key={`${f.rule_id}-${i}`} f={f} />)}</ul>
         )}
       </Section>
       <Section id="sec-notchecked" title={t("pages.result.notCheckedTitle")}>
-        <p className="mb-2 text-gray-700">{t("pages.result.notCheckedHelp")}</p>
+        <p className="mb-3 text-slate-700">{t("pages.result.notCheckedHelp")}</p>
         <NotCheckedList report={report} />
       </Section>
       <Section id="sec-sources" title={t("pages.result.sourcesTitle")}><SourcesTable sources={report.sources} /></Section>
@@ -230,7 +231,7 @@ export default function ReportView({ report, forPrint = false }: { report: Repor
 function NotCheckedList({ report }: { report: Report }) {
   const { t, i18n } = useTranslation();
   return (
-    <ul className="list-disc space-y-1 pl-6">
+    <ul className="card list-disc space-y-1.5 p-4 pl-9 marker:text-gold-600">
       {report.not_checked.map((n, i) => <li key={`${n.code}-${i}`}>{notCheckedText(t, i18n.language, n)}</li>)}
     </ul>
   );

@@ -33,10 +33,10 @@ export default function PrintReport() {
       </div>
       <div className="relative z-10">
         <div className="mb-4 flex flex-wrap gap-3 print:hidden">
-          <button type="button" onClick={() => window.print()} className="min-h-tap rounded bg-gray-900 px-4 py-2 font-bold text-white">{t("common.print")}</button>
-          <Link to={`/result/${encodeURIComponent(reportId ?? "")}`} className="inline-flex min-h-tap items-center underline">{t("pages.print.back")}</Link>
+          <button type="button" onClick={() => window.print()} className="btn-primary">{t("common.print")}</button>
+          <Link to={`/result/${encodeURIComponent(reportId ?? "")}`} className="nav-link link-arrow">{t("pages.print.back")}</Link>
         </div>
-        <p className="mb-3 text-sm text-gray-700 print:hidden">{t("pages.print.hint")}</p>
+        <p className="mb-3 text-sm text-slate-600 print:hidden">{t("pages.print.hint")}</p>
         <h1 className="mb-3 text-2xl font-bold">{t("pages.print.title")}</h1>
         <ReportView report={report} forPrint />
         {url ? (

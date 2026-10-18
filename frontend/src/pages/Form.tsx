@@ -14,18 +14,18 @@ interface FormState {
 const EMPTY: FormState = { district: "", upazila: "", mouza: "", survey: "", khatian: "", dag: "", name: "", father: "", bank: true };
 const SURVEYS: Survey[] = ["CS", "SA", "RS", "BS"];
 const REQUIRED: (keyof FormState)[] = ["district", "upazila", "mouza", "khatian", "dag", "name"];
-const control = "mt-1 block min-h-tap w-full rounded border border-gray-500 px-3 py-2 text-base";
+const control = "control mt-1.5";
 
 function Field({ label, error, help, optional, children, id }: { label: string; error?: string; help?: string; optional?: boolean; children: ReactNode; id: string }) {
   const { t } = useTranslation();
   return (
-    <div className="mt-3">
-      <label htmlFor={id} className="font-bold">
-        {label} {optional ? <span className="font-normal text-gray-700">{t("common.optional")}</span> : null}
+    <div className="mt-4">
+      <label htmlFor={id} className="font-bold text-brand-900">
+        {label} {optional ? <span className="font-normal text-slate-600">{t("common.optional")}</span> : null}
       </label>
       {children}
-      {help ? <p id={`${id}-help`} className="text-sm text-gray-700">{help}</p> : null}
-      {error ? <p id={`${id}-err`} className="text-sm font-bold text-red-800">{error}</p> : null}
+      {help ? <p id={`${id}-help`} className="mt-1 text-sm text-slate-600">{help}</p> : null}
+      {error ? <p id={`${id}-err`} className="mt-1 animate-fade-up text-sm font-bold text-red-800">{error}</p> : null}
     </div>
   );
 }
@@ -105,23 +105,26 @@ export default function Form() {
   const id = (n: string) => `${uid}-${n}`;
 
   return (
-    <form onSubmit={submit} noValidate>
+    <form onSubmit={submit} noValidate className="mx-auto max-w-2xl">
       <MockBanner />
-      <h1 className="text-2xl font-bold">{t("pages.check.title")}</h1>
-      <p className="mt-1 text-gray-700">{t("pages.check.intro")}</p>
+      <h1 className="gradient-text text-3xl font-bold">{t("pages.check.title")}</h1>
+      <p className="mt-2 text-slate-700">{t("pages.check.intro")}</p>
       {Object.keys(errors).length > 0 ? (
-        <p ref={summary} tabIndex={-1} role="alert" className="mt-3 rounded border-2 border-red-700 bg-red-50 p-2 font-bold text-red-900">{t("pages.check.fixErrors")}</p>
+        <p ref={summary} tabIndex={-1} role="alert" className="mt-4 animate-pop rounded-2xl border-2 border-red-300 border-l-8 border-l-red-700 bg-red-50 p-3 font-bold text-red-900">{t("pages.check.fixErrors")}</p>
       ) : null}
 
-      <Field id={id("sample")} label={t("pages.check.sample")} optional>
+      <div className="card mt-5 border-gold-400/40 bg-gradient-to-br from-amber-50/90 to-white p-4 sm:p-5"><Field id={id("sample")} label={t("pages.check.sample")} optional>
         <select id={id("sample")} className={control} value="" onChange={(e) => { const s = samples.find((x) => x.sample_id === e.target.value); if (s) { setForm(fromRequest(s.request)); setErrors({}); } }}>
           <option value="">{t("common.select")}</option>
           {samples.map((s) => <option key={s.sample_id} value={s.sample_id}>{s.sample_id}: {bn ? s.label_bn : s.label_en}</option>)}
         </select>
       </Field>
 
-      <fieldset className="mt-5">
-        <legend className="text-xl font-bold">{t("pages.check.plotTitle")}</legend>
+      </div>
+
+      <fieldset className="card mt-5 p-4 sm:p-6">
+        <legend className="heading-accent float-left mb-1 w-full text-xl font-bold text-brand-900">{t("pages.check.plotTitle")}</legend>
+        <div className="clear-both" />
         <Field id={id("district")} label={t("pages.check.district")} error={fe("district")}>
           <select id={id("district")} className={control} value={form.district} {...a11y("district", id("district"))}
             onChange={(e) => setForm((f) => ({ ...f, district: e.target.value, upazila: "", mouza: "" }))}>
@@ -159,24 +162,25 @@ export default function Form() {
         </Field>
       </fieldset>
 
-      <fieldset className="mt-5">
-        <legend className="text-xl font-bold">{t("pages.check.sellerTitle")}</legend>
+      <fieldset className="card mt-5 p-4 sm:p-6">
+        <legend className="heading-accent float-left mb-1 w-full text-xl font-bold text-brand-900">{t("pages.check.sellerTitle")}</legend>
+        <div className="clear-both" />
         <Field id={id("name")} label={t("pages.check.sellerName")} error={fe("name")}>
           <input id={id("name")} className={control} value={form.name} autoComplete="off" {...a11y("name", id("name"))} onChange={(e) => set("name", e.target.value)} />
         </Field>
         <Field id={id("father")} label={t("pages.check.father")} help={t("pages.check.fatherHelp")} optional>
           <input id={id("father")} className={control} value={form.father} autoComplete="off" aria-describedby={`${id("father")}-help`} onChange={(e) => set("father", e.target.value)} />
         </Field>
-        <div className="mt-4 flex items-start gap-3">
-          <input id={id("bank")} type="checkbox" className="mt-1 h-6 w-6" checked={form.bank} aria-describedby={`${id("bank")}-help`} onChange={(e) => set("bank", e.target.checked)} />
+        <div className="mt-5 flex items-start gap-3 rounded-xl bg-brand-50/70 p-3 transition-colors hover:bg-brand-50">
+          <input id={id("bank")} type="checkbox" className="check mt-0.5" checked={form.bank} aria-describedby={`${id("bank")}-help`} onChange={(e) => set("bank", e.target.checked)} />
           <div>
-            <label htmlFor={id("bank")} className="font-bold">{t("pages.check.consentBank")}</label>
-            <p id={`${id("bank")}-help`} className="text-sm text-gray-700">{t("pages.check.consentHelp")}</p>
+            <label htmlFor={id("bank")} className="cursor-pointer font-bold text-brand-900">{t("pages.check.consentBank")}</label>
+            <p id={`${id("bank")}-help`} className="text-sm text-slate-600">{t("pages.check.consentHelp")}</p>
           </div>
         </div>
       </fieldset>
 
-      <button type="submit" className="mt-6 min-h-tap w-full rounded bg-gray-900 px-4 py-3 text-lg font-bold text-white">{t("pages.check.submit")}</button>
+      <button type="submit" className="btn-primary mt-6 w-full py-3.5">{t("pages.check.submit")}</button>
     </form>
   );
 }

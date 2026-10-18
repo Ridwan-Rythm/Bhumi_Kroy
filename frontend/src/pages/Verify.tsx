@@ -69,15 +69,15 @@ export default function Verify() {
   return (
     <div>
       <MockBanner />
-      <h1 className="text-2xl font-bold">{t("pages.verify.title")}</h1>
-      <p className="mt-2">{t("pages.verify.lead")}</p>
-      <form onSubmit={submit} className="mt-4">
-        <label htmlFor="verify-code" className="font-bold">{t("pages.verify.codeLabel")}</label>
+      <h1 className="gradient-text text-3xl font-bold">{t("pages.verify.title")}</h1>
+      <p className="mt-2 text-slate-700">{t("pages.verify.lead")}</p>
+      <form onSubmit={submit} className="card mt-5 p-4 sm:p-6">
+        <label htmlFor="verify-code" className="font-bold text-brand-900">{t("pages.verify.codeLabel")}</label>
         <input id="verify-code" value={code} onChange={(e) => setCode(e.target.value)} autoComplete="off" autoCapitalize="characters"
           aria-describedby="verify-code-help" placeholder={t("pages.verify.codePlaceholder")}
-          className="mt-1 block min-h-tap w-full rounded border border-gray-500 px-3 py-2 font-mono text-lg tracking-widest" />
-        <p id="verify-code-help" className="text-sm text-gray-700">{t("pages.verify.codeHelp")}</p>
-        <button type="submit" disabled={busy} className="mt-3 min-h-tap w-full rounded bg-gray-900 px-4 py-3 text-lg font-bold text-white disabled:opacity-60">
+          className="control mt-1.5 font-mono text-lg uppercase tracking-widest" />
+        <p id="verify-code-help" className="mt-1 text-sm text-slate-600">{t("pages.verify.codeHelp")}</p>
+        <button type="submit" disabled={busy} className="btn-primary mt-4 w-full py-3.5">
           {busy ? t("pages.verify.checking") : t("pages.verify.submit")}
         </button>
       </form>
@@ -88,15 +88,15 @@ export default function Verify() {
 
       {result && style ? (
         <div className="mt-6" data-state={result.state}>
-          <div role="status" className={`rounded-lg border-4 p-4 ${style.box}`}>
+          <div role="status" className={`animate-pop rounded-2xl border-2 border-l-[10px] p-5 shadow-lift ${style.box}`}>
             <p className="flex items-center gap-3 text-2xl font-bold">
-              <span aria-hidden="true" className="text-3xl">{style.icon}</span>
+              <span aria-hidden="true" className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white text-3xl shadow-soft">{style.icon}</span>
               {t(`pages.verify.states.${result.state}.title`)}
             </p>
             <p className="mt-2 text-gray-900">{t(`pages.verify.states.${result.state}.body`)}</p>
           </div>
 
-          <ul className="mt-3 space-y-1">
+          <ul className="stagger card mt-4 space-y-1 p-4">
             <li>{result.signature_valid ? t("pages.verify.signatureValid") : t("pages.verify.signatureInvalid")}</li>
             {local !== null ? <li>{local ? t("pages.verify.browserValid") : t("pages.verify.browserInvalid")}</li> : null}
             <li>
@@ -104,12 +104,12 @@ export default function Verify() {
                 ? t("pages.verify.ledgerOk")
                 : t("pages.verify.ledgerBroken", { reason: result.ledger.reason ? localizeParams(t, lang, { reason: result.ledger.reason }, "R-INT-01").reason : "" })}
             </li>
-            <li className="text-sm text-gray-700">{t("pages.verify.checkedAt", { date: fmtDateTime(result.checked_at, lang) })}</li>
+            <li className="text-sm text-slate-600">{t("pages.verify.checkedAt", { date: fmtDateTime(result.checked_at, lang) })}</li>
           </ul>
 
           {result.report ? (
-            <section className="mt-4" aria-labelledby="verify-report">
-              <h2 id="verify-report" className="text-xl font-bold">{t("pages.verify.reportTitle")}</h2>
+            <section className="card mt-5 animate-fade-up p-4" aria-labelledby="verify-report">
+              <h2 id="verify-report" className="heading-accent text-xl font-bold text-brand-900">{t("pages.verify.reportTitle")}</h2>
               <dl className="mt-1 space-y-1">
                 <div><dt className="inline font-bold">{t("pages.result.reportId")}: </dt><dd className="inline">{result.report.report_id}</dd></div>
                 <div><dt className="inline font-bold">{t("pages.result.shortCode")}: </dt><dd className="inline font-mono">{result.report.short_code}</dd></div>
@@ -121,8 +121,8 @@ export default function Verify() {
           ) : null}
 
           {result.diff && result.diff.length > 0 ? (
-            <section className="mt-4" aria-labelledby="verify-diff">
-              <h2 id="verify-diff" className="text-xl font-bold">{t("pages.verify.diffTitle")}</h2>
+            <section className="card mt-5 animate-fade-up p-4" aria-labelledby="verify-diff">
+              <h2 id="verify-diff" className="heading-accent text-xl font-bold text-brand-900">{t("pages.verify.diffTitle")}</h2>
               <ul className="list-disc pl-6">
                 {result.diff.map((d) => (
                   <li key={d.record_ref}>{t("pages.verify.diffItem", { kind: t(`events.${d.kind}`), date: fmtDate(d.date, lang), ref: d.record_ref })}</li>
@@ -132,7 +132,7 @@ export default function Verify() {
           ) : null}
 
           {result.state === "GENUINE_EXPIRED" || result.state === "GENUINE_SUPERSEDED" ? (
-            <p className="mt-4"><Link to="/check" className="inline-flex min-h-tap items-center underline">{t("pages.verify.newCheck")}</Link></p>
+            <p className="mt-4"><Link to="/check" className="btn-primary">{t("pages.verify.newCheck")}</Link></p>
           ) : null}
         </div>
       ) : null}

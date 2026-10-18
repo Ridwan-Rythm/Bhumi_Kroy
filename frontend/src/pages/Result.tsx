@@ -22,7 +22,6 @@ export function useReport(reportId: string | undefined) {
   return { report, error, reload: load };
 }
 
-const action = "inline-flex min-h-tap items-center justify-center rounded px-4 py-2 font-bold";
 
 export default function Result() {
   const { t } = useTranslation();
@@ -37,10 +36,10 @@ export default function Result() {
       <MockBanner />
       <h1 className="sr-only">{t("pages.result.title")}</h1>
       <ReportView report={report} />
-      <nav className="mt-8 flex flex-col gap-3 sm:flex-row">
-        {report.report_id ? <Link to={`/report/${encodeURIComponent(key)}/print`} className={`${action} bg-gray-900 text-white`}>{t("pages.result.printCta")}</Link> : null}
-        <Link to={report.short_code ? `/verify?code=${encodeURIComponent(report.short_code)}` : "/verify"} className={`${action} border-2 border-gray-900`}>{t("pages.result.verifyCta")}</Link>
-        <Link to="/check" className={`${action} border-2 border-gray-500`}>{t("pages.result.newCheck")}</Link>
+      <nav className="mt-10 flex flex-col gap-3 sm:flex-row">
+        {report.report_id ? <Link to={`/report/${encodeURIComponent(key)}/print`} className="btn-primary">{t("pages.result.printCta")}</Link> : null}
+        <Link to={report.short_code ? `/verify?code=${encodeURIComponent(report.short_code)}` : "/verify"} className="btn-secondary">{t("pages.result.verifyCta")}</Link>
+        <Link to="/check" className="btn-quiet">{t("pages.result.newCheck")}</Link>
       </nav>
     </div>
   );
