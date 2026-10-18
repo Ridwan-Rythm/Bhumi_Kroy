@@ -1,0 +1,269 @@
+{
+  "report_id": null,
+  "short_code": null,
+  "synthetic": true,
+  "issued_at": "2026-10-17T10:15:00+06:00",
+  "valid_until": null,
+  "plot": {
+    "plot_id": "P-001",
+    "district_id": "gazipur",
+    "upazila_id": "kaliakair",
+    "mouza_id": "m-gzp-kal-01",
+    "jl_no": "41",
+    "survey": "BS",
+    "khatian_no": "1203",
+    "dag_no": "4521",
+    "area_decimal": 33.0,
+    "land_class": "ধান"
+  },
+  "seller": {
+    "name": "আবুল হোসেন",
+    "father_or_husband": "মৃত শাহজাহান মোল্লা",
+    "match": {
+      "tier": "STRONG",
+      "score": 1.0
+    }
+  },
+  "consents": {
+    "bank": true
+  },
+  "verdict": "INTEGRITY_ALERT",
+  "coverage": {
+    "Q1": "COVERED",
+    "Q2": "COVERED",
+    "Q3": "COVERED",
+    "Q4": "COVERED",
+    "Q5": "COVERED",
+    "Q6": "NOT_COVERED"
+  },
+  "findings": [
+    {
+      "rule_id": "R-INT-01",
+      "severity": "INTEGRITY",
+      "confidence": "HIGH",
+      "question": "Q6",
+      "evidence": [],
+      "params": {
+        "reason": "hash_mismatch",
+        "broken_at_seq": 5
+      }
+    },
+    {
+      "rule_id": "R-CHAIN-03",
+      "severity": "HIGH",
+      "confidence": "HIGH",
+      "question": "Q2",
+      "evidence": [
+        "LND-0003"
+      ],
+      "params": {
+        "from_survey": "RS",
+        "to_survey": "BS",
+        "from_area": 33.0,
+        "to_area": 38.0,
+        "drift_pct": 15.2
+      }
+    },
+    {
+      "rule_id": "R-INFO-01",
+      "severity": "INFO",
+      "confidence": "HIGH",
+      "question": "Q1",
+      "evidence": [],
+      "params": {}
+    },
+    {
+      "rule_id": "R-INFO-02",
+      "severity": "INFO",
+      "confidence": "HIGH",
+      "question": "Q2",
+      "evidence": [],
+      "params": {
+        "depth": 3
+      }
+    },
+    {
+      "rule_id": "R-INFO-03",
+      "severity": "INFO",
+      "confidence": "HIGH",
+      "question": "Q2",
+      "evidence": [],
+      "params": {
+        "last_transfer_date": "2010-05-18"
+      }
+    }
+  ],
+  "sources": [
+    {
+      "source": "land_records",
+      "status": "OK",
+      "as_of": "2026-10-16T10:15:00+06:00",
+      "maturity": "M3",
+      "linkage": null,
+      "latency_ms": 120,
+      "record_count": 3,
+      "reason": null
+    },
+    {
+      "source": "registry",
+      "status": "OK",
+      "as_of": "2026-10-16T10:15:00+06:00",
+      "maturity": "M2",
+      "linkage": null,
+      "latency_ms": 200,
+      "record_count": 1,
+      "reason": null
+    },
+    {
+      "source": "mutation",
+      "status": "OK",
+      "as_of": "2026-10-16T10:15:00+06:00",
+      "maturity": "M3",
+      "linkage": null,
+      "latency_ms": 150,
+      "record_count": 1,
+      "reason": null
+    },
+    {
+      "source": "court",
+      "status": "NO_RECORD",
+      "as_of": "2026-10-16T10:15:00+06:00",
+      "maturity": "M2",
+      "linkage": "TEXT_MATCH",
+      "latency_ms": 250,
+      "record_count": 0,
+      "reason": null
+    },
+    {
+      "source": "khas",
+      "status": "OK",
+      "as_of": "2026-10-16T10:15:00+06:00",
+      "maturity": "M2",
+      "linkage": null,
+      "latency_ms": 180,
+      "record_count": 0,
+      "reason": null
+    },
+    {
+      "source": "bank",
+      "status": "OK",
+      "as_of": "2026-10-16T10:15:00+06:00",
+      "maturity": "M3",
+      "linkage": null,
+      "latency_ms": 220,
+      "record_count": 0,
+      "reason": null
+    }
+  ],
+  "holders_summary": {
+    "holder_count": 1,
+    "seller_share": "1"
+  },
+  "timeline": [
+    {
+      "date": "1926-03-14",
+      "kind": "SURVEY_ENTRY",
+      "survey": "CS",
+      "from_masked": null,
+      "to_masked": "মি*** উ***",
+      "share": null,
+      "area_decimal": 33.0,
+      "record_ref": "LND-0001",
+      "source": "land_records",
+      "flagged_by": []
+    },
+    {
+      "date": "1985-07-02",
+      "kind": "INHERITANCE",
+      "survey": null,
+      "from_masked": "মি*** উ***",
+      "to_masked": "শ*** কা*",
+      "share": null,
+      "area_decimal": null,
+      "record_ref": "MUT-0001",
+      "source": "mutation",
+      "flagged_by": []
+    },
+    {
+      "date": "1993-11-20",
+      "kind": "SURVEY_ENTRY",
+      "survey": "RS",
+      "from_masked": null,
+      "to_masked": "শ*** কা*",
+      "share": null,
+      "area_decimal": 33.0,
+      "record_ref": "LND-0002",
+      "source": "land_records",
+      "flagged_by": []
+    },
+    {
+      "date": "2010-05-18",
+      "kind": "SALE",
+      "survey": null,
+      "from_masked": "শ*** কা*",
+      "to_masked": "আ** হো**",
+      "share": "1",
+      "area_decimal": 33.0,
+      "record_ref": "REG-0001",
+      "source": "registry",
+      "flagged_by": []
+    },
+    {
+      "date": "2018-02-09",
+      "kind": "SURVEY_ENTRY",
+      "survey": "BS",
+      "from_masked": null,
+      "to_masked": "আ** হো**",
+      "share": null,
+      "area_decimal": 38.0,
+      "record_ref": "LND-0003",
+      "source": "land_records",
+      "flagged_by": [
+        "R-CHAIN-03"
+      ]
+    }
+  ],
+  "not_checked": [
+    {
+      "code": "static_physical_possession",
+      "params": {}
+    },
+    {
+      "code": "static_boundaries",
+      "params": {}
+    },
+    {
+      "code": "static_unregistered_agreements",
+      "params": {}
+    },
+    {
+      "code": "static_equitable_mortgage",
+      "params": {}
+    },
+    {
+      "code": "static_seller_documents",
+      "params": {}
+    },
+    {
+      "code": "static_legal_review",
+      "params": {}
+    }
+  ],
+  "ledger": {
+    "ok": false,
+    "broken_at_seq": 5,
+    "reason": "hash_mismatch",
+    "height": 5,
+    "head_hash": "sha256:72e3667e7b264c6578cef1fe1261b0a64bce025a0ed4b9e9d4eb58ca00d4e11e",
+    "checkpoint": {
+      "height": 5,
+      "head_hash": "sha256:72e3667e7b264c6578cef1fe1261b0a64bce025a0ed4b9e9d4eb58ca00d4e11e",
+      "ts": "2026-10-01T00:00:00+06:00",
+      "key_id": "demo-2026-01",
+      "signature_b64": "uBzdxuz0aiimlhO1ZfQE1cOSCha588QVMm5iEVvpL_QdA94bQO0K5biU6uW0-WZK0pNVFK2k4oLP8NhIPMOXAg"
+    }
+  },
+  "key_id": "demo-2026-01",
+  "signed_payload_b64": null,
+  "signature_b64": null
+}

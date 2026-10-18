@@ -1,0 +1,251 @@
+[
+  {
+    "sample_id": "P-001",
+    "plot_id": "P-001",
+    "scenario": "Clean plot",
+    "label_bn": "কোনো লাল সংকেত নেই",
+    "label_en": "Nothing found",
+    "expected_verdict": "GREEN",
+    "request": {
+      "plot": {
+        "district_id": "gazipur",
+        "upazila_id": "kaliakair",
+        "mouza_id": "m-gzp-kal-01",
+        "survey": "BS",
+        "khatian_no": "1203",
+        "dag_no": "4521"
+      },
+      "seller": {
+        "name": "আবুল হোসেন",
+        "father_or_husband": "মৃত শাহজাহান মোল্লা"
+      },
+      "consents": {
+        "bank": true
+      }
+    }
+  },
+  {
+    "sample_id": "P-002",
+    "plot_id": "P-002",
+    "scenario": "Seller is not the holder",
+    "label_bn": "বিক্রেতা রেকর্ডে মালিক নন",
+    "label_en": "Seller is not the record holder",
+    "expected_verdict": "RED",
+    "request": {
+      "plot": {
+        "district_id": "gazipur",
+        "upazila_id": "sreepur",
+        "mouza_id": "m-gzp-sre-02",
+        "survey": "BS",
+        "khatian_no": "877",
+        "dag_no": "2310"
+      },
+      "seller": {
+        "name": "আবু তাহের চৌধুরী",
+        "father_or_husband": "মৃত সোলায়মান শেখ"
+      },
+      "consents": {
+        "bank": true
+      }
+    }
+  },
+  {
+    "sample_id": "P-003",
+    "plot_id": "P-003",
+    "scenario": "Mortgage + pending mutation",
+    "label_bn": "বন্ধক ও অপেক্ষমাণ নামজারি",
+    "label_en": "Mortgage and pending mutation",
+    "expected_verdict": "RED",
+    "request": {
+      "plot": {
+        "district_id": "gazipur",
+        "upazila_id": "kapasia",
+        "mouza_id": "m-gzp-kap-01",
+        "survey": "BS",
+        "khatian_no": "1540",
+        "dag_no": "6104"
+      },
+      "seller": {
+        "name": "আনোয়ার হোসেন",
+        "father_or_husband": "মৃত কামাল আহমেদ"
+      },
+      "consents": {
+        "bank": true
+      }
+    }
+  },
+  {
+    "sample_id": "P-004",
+    "plot_id": "P-004",
+    "scenario": "Open title suit",
+    "label_bn": "চলমান মালিকানা মামলা",
+    "label_en": "Open title suit",
+    "expected_verdict": "RED",
+    "request": {
+      "plot": {
+        "district_id": "tangail",
+        "upazila_id": "mirzapur",
+        "mouza_id": "m-tng-mir-01",
+        "survey": "BS",
+        "khatian_no": "322",
+        "dag_no": "918"
+      },
+      "seller": {
+        "name": "আলমগীর দেওয়ান",
+        "father_or_husband": "হাবিবুর মিয়া"
+      },
+      "consents": {
+        "bank": true
+      }
+    }
+  },
+  {
+    "sample_id": "P-005",
+    "plot_id": "P-005",
+    "scenario": "Khas land",
+    "label_bn": "খাস জমি",
+    "label_en": "Khas land",
+    "expected_verdict": "RED",
+    "request": {
+      "plot": {
+        "district_id": "tangail",
+        "upazila_id": "bhuapur",
+        "mouza_id": "m-tng-bhu-02",
+        "survey": "BS",
+        "khatian_no": "2045",
+        "dag_no": "7733"
+      },
+      "seller": {
+        "name": "ওসমান চৌধুরী",
+        "father_or_husband": "মৃত ওসমান শেখ"
+      },
+      "consents": {
+        "bank": true
+      }
+    }
+  },
+  {
+    "sample_id": "P-006",
+    "plot_id": "P-006",
+    "scenario": "Double sale",
+    "label_bn": "দ্বৈত বিক্রয়",
+    "label_en": "Double sale",
+    "expected_verdict": "RED",
+    "request": {
+      "plot": {
+        "district_id": "tangail",
+        "upazila_id": "ghatail",
+        "mouza_id": "m-tng-gha-01",
+        "survey": "BS",
+        "khatian_no": "611",
+        "dag_no": "1457"
+      },
+      "seller": {
+        "name": "কামাল মণ্ডল",
+        "father_or_husband": "হান্নান সরকার"
+      },
+      "consents": {
+        "bank": true
+      }
+    }
+  },
+  {
+    "sample_id": "P-007",
+    "plot_id": "P-007",
+    "scenario": "Area drift + class change",
+    "label_bn": "আয়তন ও শ্রেণিতে অসংগতি",
+    "label_en": "Area drift and class change",
+    "expected_verdict": "AMBER",
+    "request": {
+      "plot": {
+        "district_id": "cumilla",
+        "upazila_id": "debidwar",
+        "mouza_id": "m-cml-deb-01",
+        "survey": "BS",
+        "khatian_no": "1388",
+        "dag_no": "5290"
+      },
+      "seller": {
+        "name": "শফিকুল সরকার",
+        "father_or_husband": "মৃত হান্নান পাটোয়ারী"
+      },
+      "consents": {
+        "bank": true
+      }
+    }
+  },
+  {
+    "sample_id": "P-008",
+    "plot_id": "P-008",
+    "scenario": "Name variant, no father's name",
+    "label_bn": "নামের বানান ভিন্ন, পিতার নাম নেই",
+    "label_en": "Name variant, no father's name",
+    "expected_verdict": "AMBER",
+    "request": {
+      "plot": {
+        "district_id": "cumilla",
+        "upazila_id": "burichang",
+        "mouza_id": "m-cml-bur-02",
+        "survey": "BS",
+        "khatian_no": "954",
+        "dag_no": "3366"
+      },
+      "seller": {
+        "name": "মোঃ আব্দুল করিম"
+      },
+      "consents": {
+        "bank": true
+      }
+    }
+  },
+  {
+    "sample_id": "P-008B",
+    "plot_id": "P-008",
+    "scenario": "Same plot, father's name given",
+    "label_bn": "একই জমি, পিতার নামসহ",
+    "label_en": "Same plot, father's name given",
+    "expected_verdict": "GREEN",
+    "request": {
+      "plot": {
+        "district_id": "cumilla",
+        "upazila_id": "burichang",
+        "mouza_id": "m-cml-bur-02",
+        "survey": "BS",
+        "khatian_no": "954",
+        "dag_no": "3366"
+      },
+      "seller": {
+        "name": "মোঃ আব্দুল করিম",
+        "father_or_husband": "মৃত রহিম উদ্দিন"
+      },
+      "consents": {
+        "bank": true
+      }
+    }
+  },
+  {
+    "sample_id": "P-009",
+    "plot_id": "P-009",
+    "scenario": "Unknown is not safe",
+    "label_bn": "অজানা মানে নিশ্চিন্ত নয়",
+    "label_en": "Unknown is not a pass",
+    "expected_verdict": "GREY",
+    "request": {
+      "plot": {
+        "district_id": "cumilla",
+        "upazila_id": "chandina",
+        "mouza_id": "m-cml-cha-02",
+        "survey": "BS",
+        "khatian_no": "1710",
+        "dag_no": "6841"
+      },
+      "seller": {
+        "name": "আমির বেপারী",
+        "father_or_husband": "ইউসুফ মণ্ডল"
+      },
+      "consents": {
+        "bank": true
+      }
+    }
+  }
+]
