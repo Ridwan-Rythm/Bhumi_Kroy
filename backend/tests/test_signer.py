@@ -18,7 +18,7 @@ def test_canonical_stable_regardless_of_key_order():
 
 def test_canonical_keeps_bangla_unescaped():
     out = signer.canonical({"name": "রহিম"})
-    assert "রহিম".encode("utf-8") in out
+    assert "রহিম".encode() in out
     assert b"\\u" not in out
 
 

@@ -2,6 +2,7 @@
 import asyncio
 import json
 import random
+from pathlib import Path
 
 from app.adapters.base import DEFAULTS, SOURCES, SourceResult
 from app.engine import coverage, verdict
@@ -9,7 +10,7 @@ from app.engine.pipeline import run_check
 from tests.helpers import make_db
 
 STATUSES = ["OK", "NO_RECORD", "PARTIAL", "STALE", "UNAVAILABLE", "ERROR"]
-SAMPLE = json.load(open("seed/golden/samples.json", encoding="utf-8"))[0]["request"]
+SAMPLE = json.loads(Path("seed/golden/samples.json").read_text(encoding="utf-8"))[0]["request"]
 
 
 def random_sources(rng):

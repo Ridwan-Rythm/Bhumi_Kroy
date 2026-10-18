@@ -111,7 +111,7 @@ def tamper(conn: sqlite3.Connection, plot_id: str, kind: str) -> dict:
         rows = {e["seq"]: e for e in chain.entries(conn, plot_id)}
         cols = ("ts", "source", "record_id", "record_hash", "prev_hash", "entry_hash")
         for a, b in ((2, 3), (3, 2)):
-            conn.execute("UPDATE ledger SET %s WHERE plot_id=? AND seq=?" % ",".join(c + "=?" for c in cols),
+            conn.execute(f"UPDATE ledger SET {','.join(c + '=?' for c in cols)} WHERE plot_id=? AND seq=?",
                          (*[rows[a][c] for c in cols], plot_id, b))
     conn.commit()
     return ledger_view(conn, plot_id)

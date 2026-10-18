@@ -2,6 +2,7 @@
 import asyncio
 import json
 import os
+from pathlib import Path
 
 from app.core import clock
 from app.core.errors import AppError
@@ -11,7 +12,7 @@ from app.services import demo_service as demo
 from app.services import verify_service as vs
 from tests.helpers import make_db, raises
 
-SAMPLES = {s["sample_id"]: s for s in json.load(open("seed/golden/samples.json", encoding="utf-8"))}
+SAMPLES = {s["sample_id"]: s for s in json.loads(Path("seed/golden/samples.json").read_text(encoding="utf-8"))}
 os.environ["DEMO_MODE"] = "1"
 
 

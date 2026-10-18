@@ -10,7 +10,8 @@ from app.core import clock
 from app.core.errors import AppError
 from app.core.normalize import clean_text, normalize_number_string
 from app.engine import coverage as cov
-from app.engine import report_builder, seller_match, verdict as verdict_mod
+from app.engine import report_builder, seller_match
+from app.engine import verdict as verdict_mod
 from app.engine.rules import RuleContext, run_rules
 from app.engine.title_graph import TitleGraph
 from app.ledger import chain
@@ -38,15 +39,24 @@ def normalize_request(req: dict) -> dict:
             raise AppError("VALIDATION_ERROR", f"plot.{k} must be a number", f"plot.{k}")
         out_plot[k] = v
     survey = p.get("survey")
-    if survey is not None and survey not in SURVEYS:
+    if survey is not None and (not isinstance(survey, str) or survey not in SURVEYS):
         raise AppError("VALIDATION_ERROR", "plot.survey must be CS, SA, RS or BS", "plot.survey")
     out_plot["survey"] = survey
     name = clean_text(_req_str(s, "name", "seller.name"))
     father = s.get("father_or_husband")
-    father = clean_text(father) if isinstance(father, str) and clean_text(father) else None
-    if len(name) > MAX_TEXT or (father and len(father) > MAX_TEXT):
+    if father is not None and not isinstance(father, str):
+        # A wrong type is an error, not "no father given": silently dropping it would weaken the match.
+        raise AppError("VALIDATION_ERROR", "seller.father_or_husband must be text", "seller.father_or_husband")
+    father = clean_text(father) if father is not None and clean_text(father) else None
+    if len(name) > MAX_TEXT:
         raise AppError("VALIDATION_ERROR", "name is too long", "seller.name")
-    consents = req.get("consents") or {}
+    if father and len(father) > MAX_TEXT:
+        raise AppError("VALIDATION_ERROR", "name is too long", "seller.father_or_husband")
+    consents = req.get("consents")
+    if consents is None:
+        consents = {}
+    if not isinstance(consents, dict):
+        raise AppError("VALIDATION_ERROR", "consents must be an object like {\"bank\": true}", "consents")
     bank = consents.get("bank", True)
     if not isinstance(bank, bool):
         raise AppError("VALIDATION_ERROR", "consents.bank must be true or false", "consents.bank")
@@ -59,7 +69,8 @@ def resolve_plot(conn: sqlite3.Connection, req: dict) -> dict:
     up = conn.execute("SELECT * FROM admin_units WHERE id=?", (m["parent_id"],)).fetchone() if m else None
     if not m or not up or up["id"] != p["upazila_id"] or up["parent_id"] != p["district_id"]:
         raise AppError("NOT_FOUND", "No such location", "plot.mouza_id")
-    sql, args = "SELECT * FROM plots WHERE mouza_id=? AND khatian_no=? AND dag_no=?", [p["mouza_id"], p["khatian_no"], p["dag_no"]]
+    sql = "SELECT * FROM plots WHERE mouza_id=? AND khatian_no=? AND dag_no=?"
+    args = [p["mouza_id"], p["khatian_no"], p["dag_no"]]
     if p["survey"]:
         sql, args = sql + " AND survey=?", args + [p["survey"]]
     row = conn.execute(sql, args).fetchone()

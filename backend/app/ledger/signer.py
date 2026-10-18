@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import base64
+import contextlib
 import json
 import os
 from pathlib import Path
@@ -43,12 +44,31 @@ def load_or_create_key() -> Ed25519PrivateKey:
         return _cached
     path = Path(os.environ.get("SIGNING_KEY_PATH", _DEFAULT_KEY_PATH))
     if path.exists():
+        _restrict(path)
         _cached = Ed25519PrivateKey.from_private_bytes(b64u_decode(path.read_text().strip()))
     else:
         _cached = Ed25519PrivateKey.generate()
-        path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text(b64u(_raw(_cached)))
+        _write_private(path, b64u(_raw(_cached)))
     return _cached
+
+
+def _write_private(path: Path, text: str) -> None:
+    """Create the key file readable and writable by the owner only (0600, folder 0700)."""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with contextlib.suppress(OSError):  # not our folder (shared path): the 0600 file mode still protects it
+        path.parent.chmod(0o700)
+    fd = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
+    with os.fdopen(fd, "w") as fh:
+        fh.write(text)
+
+
+def _restrict(path: Path) -> None:
+    """Tighten a key file that an older version created world-readable (best effort; no-op on Windows)."""
+    try:
+        if path.stat().st_mode & 0o077:
+            path.chmod(0o600)
+    except OSError:
+        pass
 
 
 def reset_key_cache() -> None:

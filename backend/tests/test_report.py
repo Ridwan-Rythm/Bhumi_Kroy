@@ -2,6 +2,7 @@ import asyncio
 import json
 import re
 from datetime import timedelta
+from pathlib import Path
 
 from app.core import clock
 from app.core.errors import AppError
@@ -12,7 +13,7 @@ from tests.contract_shape import check_report
 from tests.helpers import make_db, raises
 from tests.rule_helpers import fake_matcher, tier
 
-SAMPLES = {s["sample_id"]: s for s in json.load(open("seed/golden/samples.json", encoding="utf-8"))}
+SAMPLES = {s["sample_id"]: s for s in json.loads(Path("seed/golden/samples.json").read_text(encoding="utf-8"))}
 
 
 def check(conn, sid, **mod):
@@ -129,17 +130,25 @@ def test_validation_and_not_found_errors_carry_field():
     def go(req):
         return raises(AppError, lambda: asyncio.run(run_check(conn, req)))
 
-    bad = json.loads(json.dumps(base)); bad["plot"]["khatian_no"] = "12ab"
-    e = go(bad); assert (e.code, e.field, e.http_status) == ("VALIDATION_ERROR", "plot.khatian_no", 422)
-    bad = json.loads(json.dumps(base)); bad["seller"]["name"] = "   "
+    bad = json.loads(json.dumps(base))
+    bad["plot"]["khatian_no"] = "12ab"
+    e = go(bad)
+    assert (e.code, e.field, e.http_status) == ("VALIDATION_ERROR", "plot.khatian_no", 422)
+    bad = json.loads(json.dumps(base))
+    bad["seller"]["name"] = "   "
     assert go(bad).field == "seller.name"
-    bad = json.loads(json.dumps(base)); bad["plot"]["survey"] = "XX"
+    bad = json.loads(json.dumps(base))
+    bad["plot"]["survey"] = "XX"
     assert go(bad).field == "plot.survey"
-    bad = json.loads(json.dumps(base)); bad["consents"] = {"bank": "yes"}
+    bad = json.loads(json.dumps(base))
+    bad["consents"] = {"bank": "yes"}
     assert go(bad).field == "consents.bank"
-    bad = json.loads(json.dumps(base)); bad["plot"]["dag_no"] = "99999"
-    e = go(bad); assert (e.code, e.http_status) == ("NOT_FOUND", 404)
-    bad = json.loads(json.dumps(base)); bad["plot"]["upazila_id"] = "sreepur"  # mouza is not in that upazila
+    bad = json.loads(json.dumps(base))
+    bad["plot"]["dag_no"] = "99999"
+    e = go(bad)
+    assert (e.code, e.http_status) == ("NOT_FOUND", 404)
+    bad = json.loads(json.dumps(base))
+    bad["plot"]["upazila_id"] = "sreepur"  # mouza is not in that upazila
     assert go(bad).code == "NOT_FOUND"
     assert go({}).code == "VALIDATION_ERROR" and go("x").code == "VALIDATION_ERROR"
 
