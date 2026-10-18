@@ -3,15 +3,15 @@
 # Until then GitHub shows these lines as invalid owners; nothing else is affected.
 /contracts/                          @OWNER_A
 /backend/                            @OWNER_A
-/backend/app/namematch/              @OWNER_B
-/backend/tests/namematch/            @OWNER_B
-/frontend/                           @OWNER_B
-/README.md                           @OWNER_B
-/docs/concept_note/                  @OWNER_B
-/docs/slides/                        @OWNER_B
-/docs/DEMO_SCRIPT.md                 @OWNER_B
-/docs/VIDEO_STORYBOARD.md            @OWNER_B
-/docs/ai_usage/nazifa.md             @OWNER_B
+/backend/app/namematch/              @Nazifa-Riti
+/backend/tests/namematch/            @Nazifa-Riti
+/frontend/                           @Nazifa-Riti
+/README.md                           @Nazifa-Riti
+/docs/concept_note/                  @Nazifa-Riti
+/docs/slides/                        @Nazifa-Riti
+/docs/DEMO_SCRIPT.md                 @ONazifa-Riti
+/docs/VIDEO_STORYBOARD.md            @Nazifa-Riti
+/docs/ai_usage/nazifa.md             @Nazifa-Riti
 /docs/PLAN.md                        @OWNER_A
 /docs/ARCHITECTURE.md                @OWNER_A
 /docs/EVALUATION.md                  @OWNER_A
