@@ -44,7 +44,7 @@ def test_reorder_two_entries_is_link_broken():
     a, b = chain.entries(conn, PLOT)[1], chain.entries(conn, PLOT)[2]
     cols = ("ts", "source", "record_id", "record_hash", "prev_hash", "entry_hash")
     for src, dst_seq in ((a, b["seq"]), (b, a["seq"])):  # swap contents, keep seq numbers
-        conn.execute("UPDATE ledger SET %s WHERE plot_id=? AND seq=?" % ",".join(c + "=?" for c in cols),
+        conn.execute(f"UPDATE ledger SET {','.join(c + '=?' for c in cols)} WHERE plot_id=? AND seq=?",
                      (*[src[c] for c in cols], PLOT, dst_seq))
     st = chain.verify(conn, PLOT)
     assert (st.ok, st.reason) == (False, "link_broken")

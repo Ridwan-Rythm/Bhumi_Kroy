@@ -1,8 +1,8 @@
 """Rule registry. A rule is a function(ctx) -> list[Finding dict], registered by ID with metadata."""
 from __future__ import annotations
 
+from collections.abc import Callable
 from dataclasses import dataclass
-from typing import Callable
 
 SEVERITY_ORDER = {"INTEGRITY": 0, "CRITICAL": 1, "HIGH": 2, "MEDIUM": 3, "INFO": 4, "COVERAGE": 5}
 
@@ -31,7 +31,7 @@ REGISTRY: dict[str, RuleMeta] = {}
 USABLE = ("OK", "NO_RECORD", "STALE")
 
 
-def usable(ctx: "RuleContext", *names: str) -> bool:
+def usable(ctx: RuleContext, *names: str) -> bool:
     """True when every named source answered completely. Rules that INFER something from replaying
     several sources must not fire on a data gap (a missing deed is not evidence of a broken chain)."""
     return all(ctx.sources[n].status in USABLE for n in names)

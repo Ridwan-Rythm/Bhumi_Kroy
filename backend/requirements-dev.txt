@@ -1,0 +1,6 @@
+-r requirements.txt
+# Test and lint tools (CI and `make setup`). pytest-asyncio is not needed: tests drive asyncio.run themselves.
+pytest==9.1.1
+httpx==0.28.1
+jsonschema==4.26.0
+ruff==0.17.1

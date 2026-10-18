@@ -42,8 +42,11 @@ def connect(path: str | None = None) -> sqlite3.Connection:
     path = path or db_path()
     if path != ":memory:":
         Path(path).parent.mkdir(parents=True, exist_ok=True)
-    conn = sqlite3.connect(path)
+    # timeout: wait (instead of failing) while another request holds the write lock.
+    conn = sqlite3.connect(path, timeout=10)
     conn.row_factory = sqlite3.Row
+    if path != ":memory:":
+        conn.execute("PRAGMA journal_mode=WAL")  # readers do not block the writer
     init_db(conn)
     return conn
 

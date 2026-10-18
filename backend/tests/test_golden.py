@@ -1,13 +1,14 @@
 """The ten golden samples (contract section 9): verdict, EXACT set of non-INFO rule_ids, coverage."""
 import asyncio
 import json
+from pathlib import Path
 
 from app import namematch
 from app.engine.pipeline import run_check
 from tests.contract_shape import check_report
 from tests.helpers import make_db, skip
 
-SAMPLES = {s["sample_id"]: s for s in json.load(open("seed/golden/samples.json", encoding="utf-8"))}
+SAMPLES = {s["sample_id"]: s for s in json.loads(Path("seed/golden/samples.json").read_text(encoding="utf-8"))}
 ALL_COVERED = {q: "COVERED" for q in ("Q1", "Q2", "Q3", "Q4", "Q5", "Q6")}
 
 # sample -> (verdict, non-INFO rule_ids, coverage)

@@ -7,33 +7,47 @@ import sqlite3
 from datetime import datetime, timedelta
 
 from app.core import clock
+from app.core.errors import AppError
 from app.engine import coverage as cov
 from app.engine.title_graph import frac_text
 from app.ledger import chain, checkpoint, signer
 
 SHORT_ALPHABET = "ABCDEFGHJKMNPQRSTUVWXYZ23456789"
 VALID_DAYS = 7
+MAX_ISSUE_ATTEMPTS = 25
+SHORT_LEN = 8
 
 
-def normalize_short_code(code: str) -> str:
-    return "".join(ch for ch in code.upper() if ch in SHORT_ALPHABET)
+def normalize_short_code(code: object) -> str | None:
+    """'k7m2-9qxa' / 'K7M2 9QXA' -> 'K7M29QXA'. Returns None unless the text is exactly 8 characters
+    from SHORT_ALPHABET once case, one optional hyphen or space in the middle and the ends are
+    ignored. Stray or look-alike characters (I, L, O, 0, 1) make the code invalid; they are never
+    silently dropped, because 'NQJ45NNW0000' must not resolve to a real report."""
+    if not isinstance(code, str):
+        return None
+    text = code.strip().upper()
+    if len(text) == SHORT_LEN + 1 and text[4] in "- ":
+        text = text[:4] + text[5:]
+    if len(text) != SHORT_LEN or any(ch not in SHORT_ALPHABET for ch in text):
+        return None
+    return text
 
 
 def new_short_code(conn: sqlite3.Connection) -> str:
     while True:
-        raw = "".join(secrets.choice(SHORT_ALPHABET) for _ in range(8))
+        raw = "".join(secrets.choice(SHORT_ALPHABET) for _ in range(SHORT_LEN))
         code = f"{raw[:4]}-{raw[4:]}"
         if not conn.execute("SELECT 1 FROM reports WHERE short_code=?", (code,)).fetchone():
             return code
 
 
-def new_report_id(conn: sqlite3.Connection, now: datetime) -> str:
-    n = conn.execute("SELECT COUNT(*) FROM reports").fetchone()[0] + 1
-    while True:
-        rid = f"RPT-{now.year}-{n:06d}"
-        if not conn.execute("SELECT 1 FROM reports WHERE report_id=?", (rid,)).fetchone():
-            return rid
-        n += 1
+def new_report_id(conn: sqlite3.Connection, now: datetime, skip: int = 0) -> str:
+    """Next free RPT-<year>-<n>. n is MAX+1 (never COUNT+1, which repeats after any gap).
+    `skip` lets the caller step past an id that another writer took between this read and the INSERT."""
+    prefix = f"RPT-{now.year}-"
+    row = conn.execute("SELECT MAX(CAST(SUBSTR(report_id, ?) AS INTEGER)) FROM reports WHERE report_id LIKE ?",
+                       (len(prefix) + 1, prefix + "%")).fetchone()
+    return f"{prefix}{(row[0] or 0) + 1 + skip:06d}"
 
 
 def findings_hash(findings: list[dict]) -> str:
@@ -81,18 +95,33 @@ def build(conn: sqlite3.Connection, plot: dict, req: dict, sources: dict, ledger
         return report  # INTEGRITY_ALERT: nothing issued, nothing stored
 
     valid_until = now + timedelta(days=VALID_DAYS)
-    report["report_id"] = new_report_id(conn, now)
-    report["short_code"] = new_short_code(conn)
     report["valid_until"] = clock.iso(valid_until)
-    payload = {"v": 1, "report_id": report["report_id"], "short_code": report["short_code"],
-               "plot_id": plot["plot_id"], "verdict": verdict, "issued_at": report["issued_at"],
-               "valid_until": report["valid_until"], "ledger_height": ledger.height,
-               "ledger_head": ledger.head_hash, "findings_hash": findings_hash(findings), "key_id": signer.KEY_ID}
-    raw = signer.canonical(payload)
-    report["signed_payload_b64"] = signer.b64u(raw)
-    report["signature_b64"] = signer.sign(raw)
-    conn.execute("INSERT INTO reports VALUES (?,?,?,?,?)",
-                 (report["report_id"], report["short_code"], plot["plot_id"],
-                  json.dumps(report, ensure_ascii=False), report["issued_at"]))
-    conn.commit()
+    _issue(conn, report, plot["plot_id"], verdict, findings, ledger, now)
     return report
+
+
+def _issue(conn: sqlite3.Connection, report: dict, plot_id: str, verdict: str, findings: list[dict],
+           ledger, now: datetime) -> None:
+    """Pick a free report_id and short code, sign, and INSERT. report_id and short_code are PRIMARY KEY
+    and UNIQUE: if a concurrent writer takes the same id first, the INSERT raises IntegrityError and
+    we sign again with the next id. The id is inside the signed payload, so it cannot be patched after."""
+    for attempt in range(MAX_ISSUE_ATTEMPTS):
+        report["report_id"] = new_report_id(conn, now, skip=attempt)
+        report["short_code"] = new_short_code(conn)
+        payload = {"v": 1, "report_id": report["report_id"], "short_code": report["short_code"],
+                   "plot_id": plot_id, "verdict": verdict, "issued_at": report["issued_at"],
+                   "valid_until": report["valid_until"], "ledger_height": ledger.height,
+                   "ledger_head": ledger.head_hash, "findings_hash": findings_hash(findings),
+                   "key_id": signer.KEY_ID}
+        raw = signer.canonical(payload)
+        report["signed_payload_b64"] = signer.b64u(raw)
+        report["signature_b64"] = signer.sign(raw)
+        try:
+            conn.execute("INSERT INTO reports VALUES (?,?,?,?,?)",
+                         (report["report_id"], report["short_code"], plot_id,
+                          json.dumps(report, ensure_ascii=False), report["issued_at"]))
+        except sqlite3.IntegrityError:
+            continue
+        conn.commit()
+        return
+    raise AppError("INTERNAL", "could not allocate a unique report id")
