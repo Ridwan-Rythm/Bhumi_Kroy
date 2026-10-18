@@ -1,8 +1,8 @@
 # Ownership from contracts/00_SHARED_CONTRACT.md section 2.
 # Replace @OWNER_A / @OWNER_B with the two GitHub usernames (A = Ridwan, backend; B = Nazifa, frontend).
 # Until then GitHub shows these lines as invalid owners; nothing else is affected.
-/contracts/                          @OWNER_A
-/backend/                            @OWNER_A
+/contracts/                          @Ridwan-Rythm
+/backend/                            @Ridwan-Rythm
 /backend/app/namematch/              @Nazifa-Riti
 /backend/tests/namematch/            @Nazifa-Riti
 /frontend/                           @Nazifa-Riti
@@ -12,14 +12,14 @@
 /docs/DEMO_SCRIPT.md                 @ONazifa-Riti
 /docs/VIDEO_STORYBOARD.md            @Nazifa-Riti
 /docs/ai_usage/nazifa.md             @Nazifa-Riti
-/docs/PLAN.md                        @OWNER_A
-/docs/ARCHITECTURE.md                @OWNER_A
-/docs/EVALUATION.md                  @OWNER_A
-/docs/backend_notes.md               @OWNER_A
-/docs/ai_usage/ridwan.md             @OWNER_A
-/Makefile                            @OWNER_A
-/.github/                            @OWNER_A
-/.gitignore                          @OWNER_A
-/.gitattributes                      @OWNER_A
-/LICENSE                             @OWNER_A
-/CLAUDE.md                           @OWNER_A
+/docs/PLAN.md                        @Ridwan-Rythm
+/docs/ARCHITECTURE.md                @Ridwan-Rythm
+/docs/EVALUATION.md                  @Ridwan-Rythm
+/docs/backend_notes.md               @Ridwan-Rythm
+/docs/ai_usage/ridwan.md             @Ridwan-Rythm
+/Makefile                            @Ridwan-Rythm
+/.github/                            @Ridwan-Rythm
+/.gitignore                          @Ridwan-Rythm
+/.gitattributes                      @Ridwan-Rythm
+/LICENSE                             @Ridwan-Rythm
+/CLAUDE.md                           @Ridwan-Rythm
