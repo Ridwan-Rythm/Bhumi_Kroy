@@ -10,8 +10,8 @@ name in `app.name`, and anything that uses legal words (khas, vested, namjari, m
 
 | Key | Bangla | Status |
 |---|---|---|
-| `app.name` | ল্যান্ডচেক | needs native review |
-| `app.title` | ল্যান্ডচেক: কেনার আগে যাচাই করুন | needs native review |
+| `app.name` | ভূমি ক্রয় | needs native review |
+| `app.title` | ভূমি ক্রয়: কেনার আগে যাচাই করুন | needs native review |
 | `language.switch` | English | needs native review |
 | `layout.skipToContent` | মূল অংশে যান | needs native review |
 | `layout.verifyLink` | প্রতিবেদন যাচাই | needs native review |

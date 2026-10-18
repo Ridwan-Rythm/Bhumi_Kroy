@@ -248,8 +248,9 @@ describe("shell accessibility and language", () => {
   });
 
   it("the product name is the same in the title and header", () => {
-    expect(en.app.name).toBe("LandCheck");
-    expect(en.app.title.startsWith("LandCheck")).toBe(true);
+    expect(en.app.name).toBe("Bhumi_Kroy");
+    expect(en.app.title.startsWith("Bhumi_Kroy")).toBe(true);
+    expect(bn.app.name).toBe("ভূমি ক্রয়");
     expect(en.app.name).not.toMatch(/[\u0980-\u09FF]/);
   });
 });

@@ -50,7 +50,7 @@ def _error(code: str, message: str, status: int, field: str | None = None, heade
 
 
 def create_app() -> FastAPI:
-    app = FastAPI(title="LandCheck API", version="1", lifespan=lifespan)
+    app = FastAPI(title="Bhumi_Kroy API", version="1", lifespan=lifespan)
     extra = [o.strip() for o in os.environ.get("CORS_ORIGINS", "").split(",") if o.strip()]
     app.add_middleware(CORSMiddleware, allow_origins=DEV_ORIGINS + extra, allow_methods=["GET", "POST"],
                        allow_headers=["Content-Type"])

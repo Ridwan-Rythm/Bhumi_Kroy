@@ -1,7 +1,7 @@
-# LandCheck (repository: Bhumi_Kroy)
+# Bhumi_Kroy
 
 **Check before you buy.** A bilingual (Bangla / English) web prototype for the LandTech 2026 Innovation Hackathon, Problem 5.
-A buyer enters a plot and the seller's name. LandCheck asks six source adapters, runs deterministic rules, and answers
+A buyer enters a plot and the seller's name. Bhumi_Kroy asks six source adapters, runs deterministic rules, and answers
 with a verdict, **what it found, what it could not check, and what to ask next**. The report is signed (Ed25519), time-limited
 and carries a QR code that anyone can verify, backed by a hash-chained, tamper-evident ledger of the underlying records.
 

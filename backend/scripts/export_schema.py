@@ -18,7 +18,7 @@ def build() -> str:
     schema = Report.model_json_schema()
     schema = {"$schema": "https://json-schema.org/draft/2020-12/schema",
               "$id": "https://landcheck.example/contracts/report.schema.json",
-              "title": "LandCheck Report (contract section 6)", **schema}
+              "title": "Bhumi_Kroy Report (contract section 6)", **schema}
     return json.dumps(schema, ensure_ascii=False, indent=2) + "\n"
 
 
