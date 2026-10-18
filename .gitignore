@@ -1,0 +1,30 @@
+# --- secrets (never commit the signing key) ---
+backend/.keys/
+*.key
+.env
+.env.*
+!.env.example
+.whoami
+
+# --- backend runtime data and caches ---
+backend/data/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# --- frontend ---
+node_modules/
+frontend/dist/
+frontend/coverage/
+*.tsbuildinfo
+
+# --- OS / editor ---
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# --- sandbox artefacts that must never be committed ---
