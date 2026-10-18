@@ -1,0 +1,220 @@
+{
+  "districts": [
+    {
+      "id": "gazipur",
+      "name_bn": "গাজীপুর",
+      "name_en": "Gazipur",
+      "upazilas": [
+        {
+          "id": "kaliakair",
+          "name_bn": "কালিয়াকৈর",
+          "name_en": "Kaliakair",
+          "mouzas": [
+            {
+              "id": "m-gzp-kal-01",
+              "name_bn": "নয়াপাড়া",
+              "name_en": "Noyapara",
+              "jl_no": "41"
+            },
+            {
+              "id": "m-gzp-kal-02",
+              "name_bn": "দক্ষিণ চরপাড়া",
+              "name_en": "Dakshin Charpara",
+              "jl_no": "57"
+            }
+          ]
+        },
+        {
+          "id": "sreepur",
+          "name_bn": "শ্রীপুর",
+          "name_en": "Sreepur",
+          "mouzas": [
+            {
+              "id": "m-gzp-sre-01",
+              "name_bn": "বেলতলী",
+              "name_en": "Beltoli",
+              "jl_no": "12"
+            },
+            {
+              "id": "m-gzp-sre-02",
+              "name_bn": "উত্তর শিমুলিয়া",
+              "name_en": "Uttar Shimulia",
+              "jl_no": "33"
+            },
+            {
+              "id": "m-gzp-sre-03",
+              "name_bn": "কাঁঠালবাড়ী",
+              "name_en": "Kanthalbari",
+              "jl_no": "64"
+            }
+          ]
+        },
+        {
+          "id": "kapasia",
+          "name_bn": "কাপাসিয়া",
+          "name_en": "Kapasia",
+          "mouzas": [
+            {
+              "id": "m-gzp-kap-01",
+              "name_bn": "তারাপুর",
+              "name_en": "Tarapur",
+              "jl_no": "8"
+            },
+            {
+              "id": "m-gzp-kap-02",
+              "name_bn": "মাঝিপাড়া",
+              "name_en": "Majhipara",
+              "jl_no": "26"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tangail",
+      "name_bn": "টাঙ্গাইল",
+      "name_en": "Tangail",
+      "upazilas": [
+        {
+          "id": "mirzapur",
+          "name_bn": "মির্জাপুর",
+          "name_en": "Mirzapur",
+          "mouzas": [
+            {
+              "id": "m-tng-mir-01",
+              "name_bn": "ভবানীগাঁও",
+              "name_en": "Bhabanigaon",
+              "jl_no": "19"
+            },
+            {
+              "id": "m-tng-mir-02",
+              "name_bn": "পশ্চিম হাটখোলা",
+              "name_en": "Paschim Hatkhola",
+              "jl_no": "73"
+            }
+          ]
+        },
+        {
+          "id": "bhuapur",
+          "name_bn": "ভূঞাপুর",
+          "name_en": "Bhuapur",
+          "mouzas": [
+            {
+              "id": "m-tng-bhu-01",
+              "name_bn": "সোনাতলা",
+              "name_en": "Sonatola",
+              "jl_no": "5"
+            },
+            {
+              "id": "m-tng-bhu-02",
+              "name_bn": "রামপুর কান্দি",
+              "name_en": "Rampur Kandi",
+              "jl_no": "48"
+            },
+            {
+              "id": "m-tng-bhu-03",
+              "name_bn": "চরবাড়ী",
+              "name_en": "Charbari",
+              "jl_no": "90"
+            }
+          ]
+        },
+        {
+          "id": "ghatail",
+          "name_bn": "ঘাটাইল",
+          "name_en": "Ghatail",
+          "mouzas": [
+            {
+              "id": "m-tng-gha-01",
+              "name_bn": "মধুপুর কান্দা",
+              "name_en": "Madhupur Kanda",
+              "jl_no": "22"
+            },
+            {
+              "id": "m-tng-gha-02",
+              "name_bn": "বিলপাড়া",
+              "name_en": "Bilpara",
+              "jl_no": "37"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cumilla",
+      "name_bn": "কুমিল্লা",
+      "name_en": "Cumilla",
+      "upazilas": [
+        {
+          "id": "debidwar",
+          "name_bn": "দেবিদ্বার",
+          "name_en": "Debidwar",
+          "mouzas": [
+            {
+              "id": "m-cml-deb-01",
+              "name_bn": "শালবন",
+              "name_en": "Shalban",
+              "jl_no": "14"
+            },
+            {
+              "id": "m-cml-deb-02",
+              "name_bn": "পূর্ব নয়নপুর",
+              "name_en": "Purba Noyanpur",
+              "jl_no": "51"
+            }
+          ]
+        },
+        {
+          "id": "burichang",
+          "name_bn": "বুড়িচং",
+          "name_en": "Burichang",
+          "mouzas": [
+            {
+              "id": "m-cml-bur-01",
+              "name_bn": "কামারগাঁও",
+              "name_en": "Kamargaon",
+              "jl_no": "30"
+            },
+            {
+              "id": "m-cml-bur-02",
+              "name_bn": "দক্ষিণ ঘোষপাড়া",
+              "name_en": "Dakshin Ghoshpara",
+              "jl_no": "68"
+            },
+            {
+              "id": "m-cml-bur-03",
+              "name_bn": "আমতলী",
+              "name_en": "Amtoli",
+              "jl_no": "9"
+            },
+            {
+              "id": "m-cml-bur-04",
+              "name_bn": "নতুন বাজার",
+              "name_en": "Notun Bazar",
+              "jl_no": "82"
+            }
+          ]
+        },
+        {
+          "id": "chandina",
+          "name_bn": "চান্দিনা",
+          "name_en": "Chandina",
+          "mouzas": [
+            {
+              "id": "m-cml-cha-01",
+              "name_bn": "বাগমারা",
+              "name_en": "Bagmara",
+              "jl_no": "17"
+            },
+            {
+              "id": "m-cml-cha-02",
+              "name_bn": "কাশিনগর",
+              "name_en": "Kashinagar",
+              "jl_no": "44"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

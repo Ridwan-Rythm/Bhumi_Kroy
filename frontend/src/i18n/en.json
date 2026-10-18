@@ -1,0 +1,492 @@
+{
+  "app": {
+    "name": "Bhumi_Kroy",
+    "title": "Bhumi_Kroy: check before you buy"
+  },
+  "language": {
+    "switch": "বাংলা"
+  },
+  "layout": {
+    "skipToContent": "Skip to content",
+    "verifyLink": "Verify a report"
+  },
+  "footer": {
+    "disclaimer": "This report is advisory and based only on the sources and dates shown. It is not a legal opinion or a guarantee of title. Consult a lawyer and inspect the land before paying.",
+    "watermark": "SYNTHETIC — NOT A REAL LAND RECORD",
+    "watermarkShort": "SYNTHETIC"
+  },
+  "common": {
+    "loading": "Loading…",
+    "retry": "Try again",
+    "back": "Back",
+    "print": "Print or save as PDF",
+    "copy": "Copy",
+    "copied": "Copied",
+    "optional": "(optional)",
+    "required": "required",
+    "select": "Select…",
+    "notAvailable": "Not available",
+    "none": "None",
+    "done": "Done",
+    "mockBanner": "Demo data: this screen shows saved sample answers, not the live service."
+  },
+  "errors": {
+    "NETWORK": "We could not reach the service. Check your connection and try again.",
+    "TIMEOUT": "The service took too long to answer. Please try again.",
+    "VALIDATION_ERROR": "Some details are not valid. Please check the form.",
+    "NOT_FOUND": "We could not find that.",
+    "RATE_LIMITED": "Too many requests. Please wait a minute and try again.",
+    "DEMO_DISABLED": "The demo console is switched off on this server.",
+    "NOT_IMPLEMENTED": "This demo action is not available yet.",
+    "INTERNAL": "Something went wrong on our side. Please try again.",
+    "BAD_RESPONSE": "The service sent an answer we could not read.",
+    "MOCK_MISSING": "No sample answer is saved for these details. Pick one of the sample plots.",
+    "UNKNOWN": "Something unexpected happened."
+  },
+  "pages": {
+    "home": {
+      "title": "Home",
+      "promise": "Check before you buy",
+      "lead": "Enter a plot and the seller's name. We look at six sources and tell you what we found, what we could not check, and what to ask next.",
+      "start": "Check a plot",
+      "verifyCta": "Verify a report",
+      "howTitle": "How it works",
+      "step1": "Enter the plot and the seller.",
+      "step2": "We check the sources.",
+      "step3": "Read the result, then print or share the report.",
+      "checksTitle": "What we look at",
+      "samplesTitle": "Try a sample plot",
+      "samplesHelp": "These plots are made up for the demo.",
+      "syntheticNote": "All data in this prototype is synthetic.",
+      "demoLink": "Demo console (for the presentation)"
+    },
+    "check": {
+      "title": "Enter the plot details",
+      "intro": "Bangla or English digits both work.",
+      "sample": "Fill in with a sample plot",
+      "plotTitle": "The plot",
+      "sellerTitle": "The seller",
+      "district": "District",
+      "upazila": "Upazila",
+      "mouza": "Mouza",
+      "mouzaOption": "{{name}} (JL {{jl}})",
+      "survey": "Survey type",
+      "surveyUnknown": "Not sure",
+      "khatian": "Khatian number",
+      "dag": "Dag (plot) number",
+      "sellerName": "Seller's name",
+      "father": "Father's or husband's name",
+      "fatherHelp": "Helps us tell people with the same name apart.",
+      "consentBank": "Also check bank mortgages",
+      "consentHelp": "This needs your consent. If you do not agree, bank records are skipped and the result says so.",
+      "submit": "Check this plot",
+      "fieldRequired": "This field is required.",
+      "fixErrors": "Please fix the marked fields.",
+      "loadFailed": "We could not load the list of places."
+    },
+    "checking": {
+      "title": "Checking the sources…",
+      "subtitle": "This usually takes a few seconds. Please keep this page open.",
+      "listTitle": "We are asking",
+      "failedTitle": "The check did not finish",
+      "backToForm": "Back to the form"
+    },
+    "result": {
+      "title": "Result",
+      "loadFailed": "We could not load this report.",
+      "plotTitle": "Plot",
+      "plotLine": "{{mouza}}, {{upazila}}, {{district}}",
+      "khatianDag": "Khatian {{khatian}}, dag {{dag}}",
+      "area": "{{area}} decimals",
+      "sellerTitle": "Seller",
+      "nameMatch": "Name match: {{tier}}",
+      "holders": "Current holders on record: {{count}}",
+      "issued": "Issued",
+      "validUntil": "Valid until",
+      "reportId": "Report ID",
+      "shortCode": "Verification code",
+      "noReportId": "Not issued (the record history failed its check)",
+      "coverageTitle": "What we could check",
+      "findingsTitle": "What we found",
+      "noFindings": "No findings.",
+      "notCheckedTitle": "What we did not check",
+      "notCheckedHelp": "This report does not cover these. Check them yourself or with a lawyer.",
+      "sourcesTitle": "Sources",
+      "asOf": "as of {{date}}",
+      "recordCount": "{{count}} records",
+      "timelineTitle": "Ownership timeline",
+      "noTimeline": "No ownership history is available.",
+      "timelineMove": "{{from}} → {{to}}",
+      "flagged": "Flagged by {{rules}}",
+      "ledgerTitle": "Record history",
+      "ledgerOk": "Intact. The history has {{height}} entries and matches its signed checkpoint.",
+      "ledgerBroken": "Failed its integrity check: {{reason}}.",
+      "printCta": "Print or save as PDF",
+      "verifyCta": "Verify this report",
+      "newCheck": "Check another plot",
+      "qrTitle": "Scan to verify",
+      "qrAlt": "QR code that opens the verification page for this report",
+      "verdictWord": "Verdict"
+    },
+    "verify": {
+      "title": "Verify a report",
+      "lead": "Enter the 8-character code printed on a report, or scan its QR code. We check the signature and the record history.",
+      "codeLabel": "Verification code",
+      "codePlaceholder": "e.g. K7M2-9QXA",
+      "codeHelp": "Letters and digits, with or without the dash.",
+      "submit": "Verify",
+      "checking": "Verifying…",
+      "fromLink": "Checking the report from the link you opened…",
+      "reportTitle": "Report details",
+      "verdictAtIssue": "Verdict when issued: {{verdict}}",
+      "signatureValid": "The signature is valid.",
+      "signatureInvalid": "The signature is not valid.",
+      "browserValid": "Your browser checked the signature itself: valid.",
+      "browserInvalid": "Your browser checked the signature itself: not valid.",
+      "diffTitle": "New since this report",
+      "diffItem": "{{kind}} on {{date}} ({{ref}})",
+      "ledgerOk": "The record history is intact.",
+      "ledgerBroken": "The record history failed its check: {{reason}}.",
+      "checkedAt": "Checked {{date}}",
+      "newCheck": "Run a new check",
+      "states": {
+        "GENUINE_CURRENT": {
+          "title": "Genuine and current",
+          "body": "This report was issued by this service, is unchanged, and nothing new has been recorded since."
+        },
+        "GENUINE_EXPIRED": {
+          "title": "Genuine but expired",
+          "body": "This report is ours and unchanged, but it is older than its validity period. Run a new check."
+        },
+        "GENUINE_SUPERSEDED": {
+          "title": "Genuine but out of date",
+          "body": "This report is ours and unchanged, but new records were added after it was issued. Run a new check."
+        },
+        "TAMPERED": {
+          "title": "Not genuine",
+          "body": "The signature does not match. This report was changed, or it did not come from us. Do not rely on it."
+        },
+        "INTEGRITY_ALERT": {
+          "title": "Record history altered",
+          "body": "The record history behind this report failed its check. Do not rely on it."
+        },
+        "UNKNOWN": {
+          "title": "Report not found",
+          "body": "We have no report with this code. Check the code and try again."
+        }
+      }
+    },
+    "print": {
+      "title": "Printable report",
+      "verifyAt": "Verify this report at {{url}}",
+      "back": "Back to the result",
+      "hint": "Use your browser's print dialog and choose \"Save as PDF\" to keep a copy."
+    },
+    "demo": {
+      "title": "Demo console",
+      "intro": "For the presentation only. These buttons change the demo data.",
+      "plot": "Plot",
+      "ledgerTitle": "Record history of this plot",
+      "statusOk": "Intact",
+      "statusBroken": "Broken",
+      "entryOk": "ok",
+      "entryBroken": "broken",
+      "colSeq": "No.",
+      "colSource": "Source",
+      "colRecord": "Record",
+      "colStatus": "Status",
+      "checkpointValid": "Signed checkpoint: valid",
+      "checkpointInvalid": "Signed checkpoint: not valid",
+      "noCheckpoint": "No signed checkpoint",
+      "tamperTitle": "Tamper with the records",
+      "addTitle": "Add a legitimate update",
+      "resetTitle": "Start again",
+      "reset": "Reset the demo data",
+      "clockTitle": "Move the clock",
+      "clockDays": "Days ahead",
+      "clockApply": "Apply",
+      "issueTitle": "Issue and verify",
+      "issue": "Issue a report for this plot",
+      "lastReport": "Last report: {{code}} ({{verdict}})",
+      "verifyLast": "Verify the last report",
+      "working": "Working…",
+      "disabled": "The demo console is switched off on this server.",
+      "scriptTitle": "Demo script: tamper vs. legitimate update",
+      "script1": "Issue a report for P-001 (green).",
+      "script2": "Tamper with a record, then check P-001 again: integrity alert.",
+      "script3": "Reset, add a legitimate mortgage, and verify the first report: genuine but out of date.",
+      "tamper": {
+        "edit_field": "Edit a field",
+        "edit_and_rehash": "Edit and recompute the fingerprints",
+        "delete_entry": "Delete an entry",
+        "swap_signature": "Swap the signature",
+        "reorder": "Reorder entries",
+        "replace_entry": "Replace an entry",
+        "replay_checkpoint": "Replay an old checkpoint"
+      },
+      "add": {
+        "new_mortgage": "New mortgage",
+        "new_mutation_pending": "New pending mutation"
+      }
+    },
+    "notFound": {
+      "title": "Page not found",
+      "body": "The page you opened does not exist.",
+      "home": "Go to the home page"
+    }
+  },
+  "questions": {
+    "Q1": "Does the seller appear to be the owner?",
+    "Q2": "Is the chain of ownership consistent?",
+    "Q3": "Is there a court case or a pending mutation?",
+    "Q4": "Is the plot on a government khas or vested list?",
+    "Q5": "Is there a mortgage or a double sale?",
+    "Q6": "Is the record history intact?"
+  },
+  "coverage": {
+    "COVERED": "Checked",
+    "PARTIAL": "Partly checked",
+    "NOT_COVERED": "Not checked"
+  },
+  "survey": {
+    "CS": "CS (Cadastral Survey)",
+    "SA": "SA (State Acquisition survey)",
+    "RS": "RS (Revisional Survey)",
+    "BS": "BS (Bangladesh Survey)"
+  },
+  "surveyShort": {
+    "CS": "CS survey",
+    "SA": "SA survey",
+    "RS": "RS survey",
+    "BS": "BS survey"
+  },
+  "sources": {
+    "land_records": "Land records (khatian)",
+    "registry": "Deed registry",
+    "mutation": "Mutation (namjari)",
+    "court": "Court cases",
+    "khas": "Khas and vested lists",
+    "bank": "Bank mortgages"
+  },
+  "sourceStatus": {
+    "OK": "Answered",
+    "NO_RECORD": "No record found",
+    "PARTIAL": "Partial answer",
+    "STALE": "Out of date",
+    "UNAVAILABLE": "Unavailable",
+    "ERROR": "Error"
+  },
+  "maturity": {
+    "label": "Data level {{level}}"
+  },
+  "linkage": {
+    "EXACT": "matched by plot number",
+    "TEXT_MATCH": "matched by text",
+    "PARTY_NAME_ONLY": "searched by names only"
+  },
+  "reasons": {
+    "consent_required": "consent not given",
+    "timeout": "timed out",
+    "outage": "service down",
+    "stale": "data too old",
+    "not_digitised": "not digitised"
+  },
+  "ledgerReason": {
+    "hash_mismatch": "a record no longer matches its fingerprint",
+    "link_broken": "the chain of entries is broken",
+    "checkpoint_mismatch": "the history no longer matches its signed checkpoint",
+    "signature_invalid": "a checkpoint signature is invalid",
+    "height_mismatch": "entries that the report relied on are missing"
+  },
+  "events": {
+    "SURVEY_ENTRY": "Survey entry",
+    "SALE": "Sale",
+    "GIFT": "Gift",
+    "INHERITANCE": "Inheritance",
+    "PARTITION": "Partition",
+    "COURT_DECREE": "Court decree",
+    "ACQUISITION": "Government acquisition",
+    "MORTGAGE": "Mortgage",
+    "MORTGAGE_RELEASE": "Mortgage released",
+    "LT_NOTICE": "Land tax notice",
+    "MUTATION_PENDING": "Mutation pending",
+    "MUTATION_APPLIED": "Mutation applied"
+  },
+  "severity": {
+    "INTEGRITY": "Record integrity",
+    "CRITICAL": "Critical",
+    "HIGH": "High",
+    "MEDIUM": "Medium",
+    "INFO": "For information",
+    "COVERAGE": "Coverage gap"
+  },
+  "confidence": {
+    "HIGH": "High confidence",
+    "MEDIUM": "Medium confidence",
+    "LOW": "Low confidence"
+  },
+  "matchTier": {
+    "STRONG": "strong",
+    "PROBABLE": "probable",
+    "WEAK": "weak",
+    "NONE": "no match",
+    "NOT_RUN": "not run"
+  },
+  "verdict": {
+    "GREEN": {
+      "label": "No red flags found",
+      "summary": "No red flags found in the sources we checked. This is not a guarantee."
+    },
+    "GREY": {
+      "label": "Not enough checked",
+      "summary": "We could not check enough sources to say. Do not treat this as a clear result."
+    },
+    "AMBER": {
+      "label": "Needs a closer look",
+      "summary": "We found things that need checking before you pay."
+    },
+    "RED": {
+      "label": "Serious problem found",
+      "summary": "We found a serious problem. Do not pay until a lawyer has looked at it."
+    },
+    "INTEGRITY_ALERT": {
+      "label": "Records may have been altered",
+      "summary": "The record history failed its integrity check. Do not rely on this result."
+    }
+  },
+  "rules": {
+    "R-OWN-01": {
+      "title": "The seller's name does not match the record",
+      "explain": "The name you gave does not match the current holder or holders on the land record.",
+      "next": "Ask the seller for the khatian, NID and proof of how they came to own the plot."
+    },
+    "R-OWN-02": {
+      "title": "The seller's name only partly matches",
+      "explain": "The name matches the record only at a {{tier}} level. It may be a spelling difference, or it may be a different person.",
+      "next": "Compare the NID, the father's name and the deed with the record."
+    },
+    "R-DISP-01": {
+      "title": "A court case involves this plot",
+      "explain": "Case {{case_ref}} at {{court}} is tied to this plot ({{linkage}}).",
+      "next": "Ask a lawyer to read the case file before you pay anything."
+    },
+    "R-DISP-02": {
+      "title": "A court case may involve this plot",
+      "explain": "Case {{case_ref}} names people like the seller but is not tied to this plot number.",
+      "next": "Ask a lawyer to confirm whether the case concerns this plot."
+    },
+    "R-DISP-03": {
+      "title": "A mutation (namjari) is pending",
+      "explain": "Mutation application {{mutation_ref}} is still pending. {{applicant_note}}",
+      "next": "Ask the land office who applied and why, before you pay."
+    },
+    "R-RES-01": {
+      "title": "The plot is on a government khas list",
+      "explain": "Record {{record_ref}} lists this plot as government khas land.",
+      "next": "Do not pay. Ask the Assistant Commissioner (Land) office."
+    },
+    "R-RES-02": {
+      "title": "The plot is on the {{list}} list",
+      "explain": "Record {{record_ref}} puts this plot on the {{list}} list of government-controlled land.",
+      "next": "Do not pay. Ask the Assistant Commissioner (Land) office."
+    },
+    "R-LIEN-01": {
+      "title": "A bank mortgage exists",
+      "explain": "{{bank_name}} holds a registered mortgage ({{lien_ref}}) on this plot.",
+      "next": "Ask for the bank's release letter before you pay."
+    },
+    "R-SALE-01": {
+      "title": "Two sale deeds overlap",
+      "explain": "Deeds {{deed_a}} and {{deed_b}} both sell overlapping land ({{overlap}}).",
+      "next": "Do not pay until a lawyer explains which deed is valid."
+    },
+    "R-CHAIN-03": {
+      "title": "The plot area changed between surveys",
+      "explain": "The area went from {{from_area}} decimals in the {{from_survey}} to {{to_area}} decimals in the {{to_survey}} ({{drift_pct}}% change).",
+      "next": "Ask for a surveyor's measurement and the reason for the change."
+    },
+    "R-CHAIN-04": {
+      "title": "The land class changed",
+      "explain": "The land class changed from {{from_class}} to {{to_class}}.",
+      "next": "Ask which approval allowed the change."
+    },
+    "R-INT-01": {
+      "title": "The record history failed its integrity check",
+      "explain": "The tamper-evident log broke at entry {{broken_at_seq}}: {{reason}}.",
+      "next": "Do not rely on this result. Tell the land office and ask for a fresh certified copy."
+    },
+    "R-INT-02": {
+      "title": "{{source}} data is out of date",
+      "explain": "The latest data from {{source}} is from {{as_of}}.",
+      "next": "Ask that office for a current certified copy."
+    },
+    "R-INT-03": {
+      "title": "{{source}} could not be checked",
+      "explain": "{{source}} did not answer ({{reason}}).",
+      "next": "Try again later and ask that office for a certified copy."
+    },
+    "R-INFO-01": {
+      "title": "The seller's name matches the record",
+      "explain": "The seller's name strongly matches the current record.",
+      "next": "Still confirm the seller's NID and father's name."
+    },
+    "R-INFO-02": {
+      "title": "Ownership history traced",
+      "explain": "We traced {{depth}} generations of ownership.",
+      "next": "A lawyer should still read the deeds."
+    },
+    "R-INFO-03": {
+      "title": "Date of the last transfer",
+      "explain": "The last recorded transfer was on {{last_transfer_date}}.",
+      "next": "Ask to see that deed and check the people named in it."
+    },
+    "R-OWN-03": {
+      "title": "The seller holds less than they are selling",
+      "explain": "The seller holds {{seller_share}} but is selling {{selling_share}}.",
+      "next": "Ask every co-owner to sign the deed."
+    },
+    "R-CHAIN-01": {
+      "title": "A link is missing in the chain of ownership",
+      "explain": "The records do not show how the plot passed from one owner to the next.",
+      "next": "Ask for the deed or inheritance record that fills the gap."
+    },
+    "R-CHAIN-02": {
+      "title": "Recorded shares do not add up",
+      "explain": "The recorded shares add up to {{share_sum}}, not to 1.",
+      "next": "Ask a lawyer to reconcile the shares."
+    },
+    "R-RES-03": {
+      "title": "Older records suggest government land",
+      "explain": "Record {{record_ref}} suggests this plot may once have been government land.",
+      "next": "Ask the Assistant Commissioner (Land) office before you pay."
+    },
+    "R-INT-04": {
+      "title": "Two sources disagree",
+      "explain": "{{source_a}} and {{source_b}} give conflicting information about this plot.",
+      "next": "Ask both offices for certified copies."
+    },
+    "fallback": {
+      "title": "Finding {{rule_id}}",
+      "explain": "This finding has no description in this version of the app.",
+      "next": "Ask a lawyer to review this report."
+    },
+    "applicantSeller": "The seller applied.",
+    "applicantOther": "Someone other than the seller applied.",
+    "evidence": "Evidence",
+    "nextStep": "What to do next"
+  },
+  "notChecked": {
+    "source_unavailable": "{{source}} could not be checked ({{reason}}).",
+    "source_stale": "{{source}} data is from {{as_of}} and may be out of date.",
+    "source_partial": "{{source}} gave only a partial answer.",
+    "linkage_party_name_only": "{{source}} was searched by names only, so a missing record does not prove there is none.",
+    "low_maturity": "{{source}} is only partly digitised (data level {{maturity}}).",
+    "static_physical_possession": "Who actually occupies the land.",
+    "static_boundaries": "Where the plot's boundaries really are on the ground.",
+    "static_unregistered_agreements": "Unregistered agreements or claims.",
+    "static_equitable_mortgage": "An informal mortgage made by handing over the title deeds.",
+    "static_seller_documents": "The seller's identity documents and the deeds they hold.",
+    "static_legal_review": "A lawyer's review of the deeds.",
+    "fallback": "Something we could not check."
+  }
+}

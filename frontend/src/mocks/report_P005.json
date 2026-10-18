@@ -1,0 +1,252 @@
+{
+  "report_id": "RPT-2026-000005",
+  "short_code": "XV9B-VVPB",
+  "synthetic": true,
+  "issued_at": "2026-10-17T10:15:00+06:00",
+  "valid_until": "2026-10-24T10:15:00+06:00",
+  "plot": {
+    "plot_id": "P-005",
+    "district_id": "tangail",
+    "upazila_id": "bhuapur",
+    "mouza_id": "m-tng-bhu-02",
+    "jl_no": "48",
+    "survey": "BS",
+    "khatian_no": "2045",
+    "dag_no": "7733",
+    "area_decimal": 33.0,
+    "land_class": "ধান"
+  },
+  "seller": {
+    "name": "ওসমান চৌধুরী",
+    "father_or_husband": "মৃত ওসমান শেখ",
+    "match": {
+      "tier": "STRONG",
+      "score": 1.0
+    }
+  },
+  "consents": {
+    "bank": true
+  },
+  "verdict": "RED",
+  "coverage": {
+    "Q1": "COVERED",
+    "Q2": "COVERED",
+    "Q3": "COVERED",
+    "Q4": "COVERED",
+    "Q5": "COVERED",
+    "Q6": "COVERED"
+  },
+  "findings": [
+    {
+      "rule_id": "R-RES-01",
+      "severity": "CRITICAL",
+      "confidence": "HIGH",
+      "question": "Q4",
+      "evidence": [
+        "KHS-0001"
+      ],
+      "params": {
+        "record_ref": "KHS-0001"
+      }
+    },
+    {
+      "rule_id": "R-INFO-01",
+      "severity": "INFO",
+      "confidence": "HIGH",
+      "question": "Q1",
+      "evidence": [],
+      "params": {}
+    },
+    {
+      "rule_id": "R-INFO-02",
+      "severity": "INFO",
+      "confidence": "HIGH",
+      "question": "Q2",
+      "evidence": [],
+      "params": {
+        "depth": 3
+      }
+    },
+    {
+      "rule_id": "R-INFO-03",
+      "severity": "INFO",
+      "confidence": "HIGH",
+      "question": "Q2",
+      "evidence": [],
+      "params": {
+        "last_transfer_date": "2010-05-18"
+      }
+    }
+  ],
+  "sources": [
+    {
+      "source": "land_records",
+      "status": "OK",
+      "as_of": "2026-10-16T10:15:00+06:00",
+      "maturity": "M3",
+      "linkage": null,
+      "latency_ms": 120,
+      "record_count": 3,
+      "reason": null
+    },
+    {
+      "source": "registry",
+      "status": "OK",
+      "as_of": "2026-10-16T10:15:00+06:00",
+      "maturity": "M2",
+      "linkage": null,
+      "latency_ms": 200,
+      "record_count": 1,
+      "reason": null
+    },
+    {
+      "source": "mutation",
+      "status": "OK",
+      "as_of": "2026-10-16T10:15:00+06:00",
+      "maturity": "M3",
+      "linkage": null,
+      "latency_ms": 150,
+      "record_count": 1,
+      "reason": null
+    },
+    {
+      "source": "court",
+      "status": "NO_RECORD",
+      "as_of": "2026-10-16T10:15:00+06:00",
+      "maturity": "M2",
+      "linkage": "TEXT_MATCH",
+      "latency_ms": 250,
+      "record_count": 0,
+      "reason": null
+    },
+    {
+      "source": "khas",
+      "status": "OK",
+      "as_of": "2026-10-16T10:15:00+06:00",
+      "maturity": "M2",
+      "linkage": null,
+      "latency_ms": 180,
+      "record_count": 1,
+      "reason": null
+    },
+    {
+      "source": "bank",
+      "status": "OK",
+      "as_of": "2026-10-16T10:15:00+06:00",
+      "maturity": "M3",
+      "linkage": null,
+      "latency_ms": 220,
+      "record_count": 0,
+      "reason": null
+    }
+  ],
+  "holders_summary": {
+    "holder_count": 1,
+    "seller_share": "1"
+  },
+  "timeline": [
+    {
+      "date": "1926-03-14",
+      "kind": "SURVEY_ENTRY",
+      "survey": "CS",
+      "from_masked": null,
+      "to_masked": "ব** মু**",
+      "share": null,
+      "area_decimal": 33.0,
+      "record_ref": "LND-0013",
+      "source": "land_records",
+      "flagged_by": []
+    },
+    {
+      "date": "1985-07-02",
+      "kind": "INHERITANCE",
+      "survey": null,
+      "from_masked": "ব** মু**",
+      "to_masked": "আ*** সি***",
+      "share": null,
+      "area_decimal": null,
+      "record_ref": "MUT-0006",
+      "source": "mutation",
+      "flagged_by": []
+    },
+    {
+      "date": "1993-11-20",
+      "kind": "SURVEY_ENTRY",
+      "survey": "RS",
+      "from_masked": null,
+      "to_masked": "আ*** সি***",
+      "share": null,
+      "area_decimal": 33.0,
+      "record_ref": "LND-0014",
+      "source": "land_records",
+      "flagged_by": []
+    },
+    {
+      "date": "2010-05-18",
+      "kind": "SALE",
+      "survey": null,
+      "from_masked": "আ*** সি***",
+      "to_masked": "ও*** চৌ**",
+      "share": "1",
+      "area_decimal": 33.0,
+      "record_ref": "REG-0005",
+      "source": "registry",
+      "flagged_by": []
+    },
+    {
+      "date": "2018-02-09",
+      "kind": "SURVEY_ENTRY",
+      "survey": "BS",
+      "from_masked": null,
+      "to_masked": "ও*** চৌ**",
+      "share": null,
+      "area_decimal": 33.0,
+      "record_ref": "LND-0015",
+      "source": "land_records",
+      "flagged_by": []
+    }
+  ],
+  "not_checked": [
+    {
+      "code": "static_physical_possession",
+      "params": {}
+    },
+    {
+      "code": "static_boundaries",
+      "params": {}
+    },
+    {
+      "code": "static_unregistered_agreements",
+      "params": {}
+    },
+    {
+      "code": "static_equitable_mortgage",
+      "params": {}
+    },
+    {
+      "code": "static_seller_documents",
+      "params": {}
+    },
+    {
+      "code": "static_legal_review",
+      "params": {}
+    }
+  ],
+  "ledger": {
+    "ok": true,
+    "broken_at_seq": null,
+    "reason": null,
+    "height": 6,
+    "head_hash": "sha256:abba2db70bb69d93f3f3871bdbda6edee9e23a4d9e5b01e53dda6b81f11b56b0",
+    "checkpoint": {
+      "height": 6,
+      "head_hash": "sha256:abba2db70bb69d93f3f3871bdbda6edee9e23a4d9e5b01e53dda6b81f11b56b0",
+      "ts": "2026-10-17T10:15:00+06:00",
+      "key_id": "demo-2026-01",
+      "signature_b64": "Upz7nld-qUJe0VW2EY-ds92z30FlSJuqIXxI9oyu0brCy0FdvA3Jzlo3fZbc2pWShXU1uwDROWfiCxIqc2INBw"
+    }
+  },
+  "key_id": "demo-2026-01",
+  "signed_payload_b64": "eyJmaW5kaW5nc19oYXNoIjoic2hhMjU2OmNiYzZhMmM1OWU0MWFkNTEwNTI2Zjg4ZWJlZWI4OTk4ZTQxZGVhZWQ0OWVjZTcxMzFlZmE0Y2FjMTdiNTVhNTYiLCJpc3N1ZWRfYXQiOiIyMDI2LTEwLTE3VDEwOjE1OjAwKzA2OjAwIiwia2V5X2lkIjoiZGVtby0yMDI2LTAxIiwibGVkZ2VyX2hlYWQiOiJzaGEyNTY6YWJiYTJkYjcwYmI2OWQ5M2YzZjM4NzFiZGJkYTZlZGVlOWUyM2E0ZDllNWIwMWU1M2RkYTZiODFmMTFiNTZiMCIsImxlZGdlcl9oZWlnaHQiOjYsInBsb3RfaWQiOiJQLTAwNSIsInJlcG9ydF9pZCI6IlJQVC0yMDI2LTAwMDAwNSIsInNob3J0X2NvZGUiOiJYVjlCLVZWUEIiLCJ2IjoxLCJ2YWxpZF91bnRpbCI6IjIwMjYtMTAtMjRUMTA6MTU6MDArMDY6MDAiLCJ2ZXJkaWN0IjoiUkVEIn0",
+  "signature_b64": "HvYfKRiRVLgOPYHhZdNFIhsgAd5nAOEKAbkB0JTG1FyJd60-Wh-9zJGOB_y0K5LeSL_rCCv4V59NYiwUWf5tBQ"
+}

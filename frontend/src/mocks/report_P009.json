@@ -1,0 +1,264 @@
+{
+  "report_id": "RPT-2026-000010",
+  "short_code": "UQ3M-RV8R",
+  "synthetic": true,
+  "issued_at": "2026-10-17T10:15:00+06:00",
+  "valid_until": "2026-10-24T10:15:00+06:00",
+  "plot": {
+    "plot_id": "P-009",
+    "district_id": "cumilla",
+    "upazila_id": "chandina",
+    "mouza_id": "m-cml-cha-02",
+    "jl_no": "44",
+    "survey": "BS",
+    "khatian_no": "1710",
+    "dag_no": "6841",
+    "area_decimal": 33.0,
+    "land_class": "ধান"
+  },
+  "seller": {
+    "name": "আমির বেপারী",
+    "father_or_husband": "ইউসুফ মণ্ডল",
+    "match": {
+      "tier": "STRONG",
+      "score": 1.0
+    }
+  },
+  "consents": {
+    "bank": true
+  },
+  "verdict": "GREY",
+  "coverage": {
+    "Q1": "COVERED",
+    "Q2": "COVERED",
+    "Q3": "PARTIAL",
+    "Q4": "COVERED",
+    "Q5": "PARTIAL",
+    "Q6": "COVERED"
+  },
+  "findings": [
+    {
+      "rule_id": "R-INFO-01",
+      "severity": "INFO",
+      "confidence": "HIGH",
+      "question": "Q1",
+      "evidence": [],
+      "params": {}
+    },
+    {
+      "rule_id": "R-INFO-02",
+      "severity": "INFO",
+      "confidence": "HIGH",
+      "question": "Q2",
+      "evidence": [],
+      "params": {
+        "depth": 3
+      }
+    },
+    {
+      "rule_id": "R-INFO-03",
+      "severity": "INFO",
+      "confidence": "HIGH",
+      "question": "Q2",
+      "evidence": [],
+      "params": {
+        "last_transfer_date": "2010-05-18"
+      }
+    },
+    {
+      "rule_id": "R-INT-03",
+      "severity": "COVERAGE",
+      "confidence": "HIGH",
+      "question": "Q6",
+      "evidence": [],
+      "params": {
+        "source": "bank",
+        "reason": "outage"
+      }
+    }
+  ],
+  "sources": [
+    {
+      "source": "land_records",
+      "status": "OK",
+      "as_of": "2026-10-16T10:15:00+06:00",
+      "maturity": "M3",
+      "linkage": null,
+      "latency_ms": 120,
+      "record_count": 3,
+      "reason": null
+    },
+    {
+      "source": "registry",
+      "status": "OK",
+      "as_of": "2026-10-16T10:15:00+06:00",
+      "maturity": "M2",
+      "linkage": null,
+      "latency_ms": 200,
+      "record_count": 1,
+      "reason": null
+    },
+    {
+      "source": "mutation",
+      "status": "OK",
+      "as_of": "2026-10-16T10:15:00+06:00",
+      "maturity": "M3",
+      "linkage": null,
+      "latency_ms": 150,
+      "record_count": 1,
+      "reason": null
+    },
+    {
+      "source": "court",
+      "status": "NO_RECORD",
+      "as_of": "2026-10-16T10:15:00+06:00",
+      "maturity": "M2",
+      "linkage": "PARTY_NAME_ONLY",
+      "latency_ms": 250,
+      "record_count": 0,
+      "reason": null
+    },
+    {
+      "source": "khas",
+      "status": "OK",
+      "as_of": "2026-10-16T10:15:00+06:00",
+      "maturity": "M2",
+      "linkage": null,
+      "latency_ms": 180,
+      "record_count": 0,
+      "reason": null
+    },
+    {
+      "source": "bank",
+      "status": "UNAVAILABLE",
+      "as_of": null,
+      "maturity": "M3",
+      "linkage": null,
+      "latency_ms": 220,
+      "record_count": 0,
+      "reason": "outage"
+    }
+  ],
+  "holders_summary": {
+    "holder_count": 1,
+    "seller_share": "1"
+  },
+  "timeline": [
+    {
+      "date": "1926-03-14",
+      "kind": "SURVEY_ENTRY",
+      "survey": "CS",
+      "from_masked": null,
+      "to_masked": "সো**** আ***",
+      "share": null,
+      "area_decimal": 33.0,
+      "record_ref": "LND-0025",
+      "source": "land_records",
+      "flagged_by": []
+    },
+    {
+      "date": "1985-07-02",
+      "kind": "INHERITANCE",
+      "survey": null,
+      "from_masked": "সো**** আ***",
+      "to_masked": "ম*** ই***",
+      "share": null,
+      "area_decimal": null,
+      "record_ref": "MUT-0010",
+      "source": "mutation",
+      "flagged_by": []
+    },
+    {
+      "date": "1993-11-20",
+      "kind": "SURVEY_ENTRY",
+      "survey": "RS",
+      "from_masked": null,
+      "to_masked": "ম*** ই***",
+      "share": null,
+      "area_decimal": 33.0,
+      "record_ref": "LND-0026",
+      "source": "land_records",
+      "flagged_by": []
+    },
+    {
+      "date": "2010-05-18",
+      "kind": "SALE",
+      "survey": null,
+      "from_masked": "ম*** ই***",
+      "to_masked": "আ** বে**",
+      "share": "1",
+      "area_decimal": 33.0,
+      "record_ref": "REG-0013",
+      "source": "registry",
+      "flagged_by": []
+    },
+    {
+      "date": "2018-02-09",
+      "kind": "SURVEY_ENTRY",
+      "survey": "BS",
+      "from_masked": null,
+      "to_masked": "আ** বে**",
+      "share": null,
+      "area_decimal": 33.0,
+      "record_ref": "LND-0027",
+      "source": "land_records",
+      "flagged_by": []
+    }
+  ],
+  "not_checked": [
+    {
+      "code": "linkage_party_name_only",
+      "params": {
+        "source": "court"
+      }
+    },
+    {
+      "code": "source_unavailable",
+      "params": {
+        "source": "bank",
+        "reason": "outage"
+      }
+    },
+    {
+      "code": "static_physical_possession",
+      "params": {}
+    },
+    {
+      "code": "static_boundaries",
+      "params": {}
+    },
+    {
+      "code": "static_unregistered_agreements",
+      "params": {}
+    },
+    {
+      "code": "static_equitable_mortgage",
+      "params": {}
+    },
+    {
+      "code": "static_seller_documents",
+      "params": {}
+    },
+    {
+      "code": "static_legal_review",
+      "params": {}
+    }
+  ],
+  "ledger": {
+    "ok": true,
+    "broken_at_seq": null,
+    "reason": null,
+    "height": 5,
+    "head_hash": "sha256:7495e19df7f9682ee38cd03bf37aa52b7580edcc8d5da17e4865ac8f756a1038",
+    "checkpoint": {
+      "height": 5,
+      "head_hash": "sha256:7495e19df7f9682ee38cd03bf37aa52b7580edcc8d5da17e4865ac8f756a1038",
+      "ts": "2026-10-17T10:15:00+06:00",
+      "key_id": "demo-2026-01",
+      "signature_b64": "9DotZq3bt_Tg3xX-UhObSeWU8nRGrnFfh-4MJPoBaXylC-au0f3pj8V_oAO5qoWTbYwQ2E2lz9U9BlWgfelDAA"
+    }
+  },
+  "key_id": "demo-2026-01",
+  "signed_payload_b64": "eyJmaW5kaW5nc19oYXNoIjoic2hhMjU2OmQxOTI5MDA5NGIyNWZmNTE2ODk1NjhjODk2ZDBkODIwMTliYmJiMzQ2OGUzMjg2NTRmOWE1OWM4YmQ3NDM3MTMiLCJpc3N1ZWRfYXQiOiIyMDI2LTEwLTE3VDEwOjE1OjAwKzA2OjAwIiwia2V5X2lkIjoiZGVtby0yMDI2LTAxIiwibGVkZ2VyX2hlYWQiOiJzaGEyNTY6NzQ5NWUxOWRmN2Y5NjgyZWUzOGNkMDNiZjM3YWE1MmI3NTgwZWRjYzhkNWRhMTdlNDg2NWFjOGY3NTZhMTAzOCIsImxlZGdlcl9oZWlnaHQiOjUsInBsb3RfaWQiOiJQLTAwOSIsInJlcG9ydF9pZCI6IlJQVC0yMDI2LTAwMDAxMCIsInNob3J0X2NvZGUiOiJVUTNNLVJWOFIiLCJ2IjoxLCJ2YWxpZF91bnRpbCI6IjIwMjYtMTAtMjRUMTA6MTU6MDArMDY6MDAiLCJ2ZXJkaWN0IjoiR1JFWSJ9",
+  "signature_b64": "l6tpuTIafzAnc1muiNzGA3uZRUZm_hh9FaQZqTxIkJR75z3Jp95a2Lb6SNqspg_qffR-4-xIzJLJIUguYzD7BA"
+}
